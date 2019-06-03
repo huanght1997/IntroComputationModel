@@ -1,0 +1,12 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$且$F\in$AM计算函数$f$, 构造算盘机$G$使得
+$$(0,0,0,\cdots,0,\cdots)G=
+\protect\begin{cases}
+    (a,0,0,\cdots)&,\text{若}a\text{为}f\text{的最小根},\\
+    \uparrow&,\text{若}f\text{无根}.
+\protect\end{cases}$$}
+\begin{solution}
+思路如下:
+一个档专门表示自变量$x$, 假设$f$需要再额外用到$k$个档, 先计算$f(0)$, 若为0, 不进行操作. $k+2$档即$x$自增1, 清除1档结果后复制到1档, 计算$f(x)$, 如果1档(即$f$的值)的数不为0则重复, 到达0后,  移动到1档, 完成. 如果没有根, 这个算盘机将永远算下去.
+
+若$f$需要$k$个档, 这个算盘机可表示为$$f\L A_{k+2}Z_1\cp_{k+2,1,k+3}f\R_1\mv_{k+2,1}.$$
+\end{solution}

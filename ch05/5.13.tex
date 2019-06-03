@@ -1,0 +1,32 @@
+\problem{证明: $S=\{a_1,a_2,\cdots,a_k\}$是Turing-可计算的.}
+\begin{proof}
+先将$S$中的元素按照升序排列, 即$a_i<a_j\Leftrightarrow i<j$.
+
+构造的机器将拥有$a_k+4$个状态. 状态1遇到0停机(不可能), 遇到1写0转状态2. 在状态的值$s\leqslant a_{k}+2$时, 遇到0, 则写1, 若$s-2\in S$, 不动并停机, 否则右移一位转状态$a_k+4$; 遇到1, 则抹去, 右移一位, 转状态$s+1$.
+
+$s=a_{k}+3$时, 当遇到0时, 写1, 右移1位, 转状态$a_{k}+4$; 当遇到1时, 写0, 右移1位, 不改变状态.
+
+$s=a_{k}+4$时, 当遇到0时, 写1, 左移1位, 停机; 当遇到1时, 直接停机.
+
+示意如表\ref{tab:sol5.13}.
+
+\begin{table}[!htbp]
+\centering
+\caption{题5.13机器示例}
+\label{tab:sol5.13}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &       0   &       1   \\\hline
+1   &           &   $0R2$   \\\hline
+... &   ...     &   ...     \\\hline
+$a_i+2$   &   $1O(a_k+5)$   &     $0R(a_i+3)$      \\\hline
+... &   ...     &   ...     \\\hline
+$m$   &   $1R(a_k+4)$   &   $0R(m+1)$ \\\hline
+... &   ...     &   ...     \\\hline
+$a_k+2$   &   $1O(a_k+5)$ &   $0R(a_k+3)$ \\\hline
+$a_k+3$   &   $1R(a_k+4)$ &   $0R(a_k+3)$ \\\hline
+$a_k+4$   &   $1L(a_k+5)$ &   \\\hline
+\thickhline
+\end{tabularx}
+\end{table}
+\end{proof}

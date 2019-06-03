@@ -1,0 +1,8 @@
+\problem{证明: 对于任意$P,Q\in\Lambda$, 若$P\manystepbeta Q$, 则$\lambda z.P\manystepbeta \lambda z.Q$.}
+\begin{proof}
+    根据题3.7的结论, $P\manystepbeta Q$可得到存在$P_0,\cdots,P_n\in\Lambda$使得$P\equiv P_0,Q\equiv P_n, P_i\equiv P_{i+1}$.
+	
+	由于$\onestepbeta$是$\beta$的合拍闭包, 因此可得对任意$A, B\in\Lambda$, 若$A\onestepbeta B$, 则$\lambda x.A\onestepbeta\lambda x.B$. 于是有$\lambda z.P_i\onestepbeta\lambda z.P_{i+1}$对任意自然数$i, i<n$都成立.
+	
+	因此, $\lambda z.P\manystepbeta\lambda z.Q$.
+\end{proof}

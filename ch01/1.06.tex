@@ -1,0 +1,26 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$, 证明: $f$可以作为配对函数的左函数当且仅当对任何$i\in\mathbb{N}$,$$|\{x\in\mathbb{N}:f(x)=i\}|=\aleph_0.$$}
+\begin{proof}
+    记$\mathcal{X}_i=\{x\in\mathbb{N}:f(x)=i\}$.
+
+    \textbf{先证明必要性.}
+
+    显然, $\mathcal{X}_i\subseteq\mathbb{N}$, 因此只需要证明该集合内的元素个数无限即可. \footnote{根据可数选择公理(axiom of countable choice), $\aleph_0$即自然数集等无限可数集的基数是所有无限集的基数里面最小的.}
+
+    假设$\mathcal{X}_i$是有限集.
+
+    考虑与之对应的配对函数$\pg:\mathbb{N}^2\to\mathbb{N}$和右函数$g:\mathbb{N}\to\mathbb{N}$, 记$\mathcal{Y}=\{g(x)|x\in\mathcal{X}_i\}$, 那么显然$\mathcal{Y}$也是有限集, 集合$\mathbb{N}-\mathcal{Y}$非空.
+
+    任取$j\in\mathbb{N}-\mathcal{Y}$, 若$\pg(i,j)\in\mathcal{X}_i$, 则$j=g(\pg(i,j))\in\mathcal{Y}$, 与$j\in\mathbb{N}-\mathcal{Y}$矛盾; 若$\pg(i,j)\notin\mathcal{X}_i$, 则$f(\pg(i,j)) \neq i$, 与配对函数的定义矛盾. 故$\mathcal{X}_i$是无限集, 因而命题成立.
+
+    \textbf{再证明充分性.}
+
+    对任意的$i\in\mathbb{N}$, 都有$|\{x\in\mathbb{N}:f(x)=i\}|=\aleph_0$, 那么$\mathcal{X}_i$可以与$\mathbb{N}$建立一个双射, 记为函数$F_i:\mathbb{N}\to\mathcal{X}_i$及其反函数$F_i^{-1}:\mathcal{X}_i\to\mathbb{N}$.
+
+    现在, 可以定义$g:\mathbb{N}\to\mathbb{N}$如下:
+    $$g(x)=\begin{cases}
+        j,&\textrm{若} x=F_i(j),\\
+        0,&\textrm{否则}.
+    \end{cases}$$
+	
+    那么, 当$x=F_i(j)$时, 因为$F_i(j)\in\mathcal{X}_i$, $f(x)=i$成立; 同时$g(x)=j$成立. 所以, 令$\pg(i,j)=F_i(j)$即可, $f$即为$\pg$的左函数.
+\end{proof}

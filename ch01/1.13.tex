@@ -1,0 +1,34 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$满足:$$\protect\begin{aligned}
+    f(0)=&1,\\
+    f(1)=&1,\\
+    f(x+2)=&f(x)+f(x+1),
+\protect\end{aligned}$$证明:\\
+    (1) $f\in\PRF$;\\
+    (2) $f\in\EF$.}
+\begin{proof}
+    令$F(n)=2^{f(n)}3^{f(n+1)}$, 有$F(0)=2^1\cdot 3^1=6$,
+    $$\begin{aligned}
+        F(n+1)&=2^{f(n+1)}3^{f(n+2)}\\
+        &=2^{f(n+1)}3^{f(n+1)+f(n)}\\
+        &=2^{\ep_1(F(n))}3^{\ep_1(F(n))+\ep_0(F(n))}\\
+        &=H(F(n))
+    \end{aligned}$$
+	
+    这里$H(x)=2^{\ep_1(x)}3^{\ep_1(x)+\ep_0(x)}$,由于$x^y,+,\times,\ep\in\EF$, 所以$H(x)\in\EF$. 自然$H(x)\in\PRF$.
+
+    又因为$F(0)=6,F(n+1)=H(F(n))=H\circ P_2^2(n,F(n))$, 所以$F=\mathrm{Prim}^0(6,H\circ P_2^2)\in\PRF$. 因为$f(n)=\ep_0(F(n))$, 所以$f\in\PRF$.
+
+    现在证明$f\in\EF$.
+
+    首先证明$f(x)\leqslant 2^x$.
+    
+    因为$f(0)=1\leqslant2^0,f(1)=1\leqslant2^1,f(x+2)=f(x)+f(x+1)\leqslant2^x+2^{x+1}\leq2^{x+1}+2^{x+1}=2^{x+2}$, 所以由数学归纳法可证明$f(x)\leqslant 2^x$.
+
+    那么令$G(n)=2^{2^n}3^{2^{n+1}}$, 有$F(n)=2^{f(n)}3^{f(n+1)}\leqslant2^{2^n}3^{2^{n+1}}=G(n)$, 而$G(n)\in\EF$, 那么可以如下构造一番:
+
+    $$F\circ P^2_2(x, 0)=F(0)=6=S^6Z(x)$$
+    $$F\circ P^2_2(x, n+1)=H\circ P_3^3(x, n, F\circ P^2_2(x,n))$$
+    $$G\circ P^2_2(x, n)\equiv G(n)$$
+
+    显然$S^6Z\in\EF,H\circ P_3^3\in\EF,G\circ P^2_2\in\EF$(前面已经证明$H\in\EF$), 所以根据定理1.31, $F\circ P^2_2\in\EF$, 那么$F=P_1^1\circ (F\circ P^2_2)\in\EF$, 因为$f(n)=\ep_0(F(n))$, 所以$f\in\EF$.
+\end{proof}

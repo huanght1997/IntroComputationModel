@@ -1,0 +1,9 @@
+\problem{证明: 对任何$M,N\in\Lambdaclosed$, 方程$xN=Mx$对于$x$有解.}
+\begin{proof}
+    令$x$呈形$\lambda a. B$, 那么有$xN=B$成立, 问题可转化为$B=M\lambda a. B$对$B$有解.
+	$$B=M(\lambda a. B)\Rightarrow B=(\lambda b.M(\lambda a. b)) B.$$
+	
+	令$\mathbf{Y}$为不动点组合子, 那么$B=\mathbf{Y}(\lambda b.M(\lambda a.b))$.
+	
+	因此$x$有解, $x=\lambda c.\mathbf{Y}(\lambda b.M(\lambda a.b))$可使等式$xN=Mx$成立.
+\end{proof}

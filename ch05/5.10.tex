@@ -1,0 +1,52 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$定义如下:
+$$\protect\begin{aligned}
+f(0)&=0,\\
+f(x+1)&=g(f(x)).
+\protect\end{aligned}$$
+证明: 若$g$为Turing-可计算, 则$f$为Turing-可计算.}
+\begin{proof}
+按照定理5.14的证明方式, 令$y$恒为0. 因此首先在原来的输入上添加0作为$y$, 构建机器$M_1$如表\ref{tab:sol5.10m1}:
+
+\begin{table}[!htbp]
+\centering
+\caption{题5.10机器$M_1$}
+\label{tab:sol5.10m1}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &  0    &      1   \\
+\hline
+1   & $0R2$ &   $1R1$   \\
+\hline
+2   & $1L3$ &           \\
+\hline
+3   & $0L4$ &           \\
+\hline
+4   & $0R5$ &   $1L4$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+易知$M_1|1:0\underset{\uparrow}{1}^{x+1}0\cdots\twoheadrightarrow5:0\underset{\uparrow}{1}^{x+1}010\cdots$.
+
+由于$g$是Turing-可计算的, 所以存在机器$\machine{g}$计算函数$g$.
+
+构造机器$M_2$如表\ref{tab:sol5.10m2}所示:
+\begin{table}[!htbp]
+\centering
+\caption{题5.4机器$M_2$}
+\label{tab:sol5.10m2}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &  0    &      1   \\
+\hline
+1   &       &   $0R2$   \\
+\hline
+2   & $0Ru$ &   $1R3$   \\
+\hline
+3   & $0R4$ &   $1R3$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+令$M_3=M_2\concat \machine{g}+3 \concat \machine{compress} \concat \machine{shiftl}$, 并令$\machine{f}=\mathrm{repeat}M_3$, $M=M_1\concat \machine{f}$即为能计算$f$的机器, 因此$f$为Turing-可计算.
+\end{proof}

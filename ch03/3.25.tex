@@ -1,0 +1,15 @@
+\problem{证明: 存在$H_2\in\Lambdaclosed$, 使得对于任意$F\in\Lambda$, 有$$H_2\churchnumber{F}\equivbeta F\churchnumber{H_2\churchnumber{F}}.$$}
+\begin{proof}
+    由定理3.41可知, 存在枚举子$E\in\Lambdaclosed$, 使得对于任何$M\in\Lambdaclosed$, 有$E\churchnumber{M}\equivbeta M$.
+    
+    令$A=\lambda xy.Ey(\churchnumber{xxy})$, $H_2=AA$, 那么有
+
+    \begin{align*}
+        H_2\churchnumber{F}&\equiv AA\churchnumber{F}\\
+        &\equivbeta E\churchnumber{F}(\churchnumber{AA\churchnumber{F}})\\
+        &\equivbeta F(\churchnumber{AA\churchnumber{F}})\\
+        &\equiv F\churchnumber{H_2\churchnumber{F}}
+    \end{align*}
+
+    因此, 我们找到了使命题成立的$H_2$, 证毕.
+\end{proof}

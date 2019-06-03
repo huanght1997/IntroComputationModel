@@ -1,0 +1,17 @@
+\problem{证明二元不动点定理: 对于任何$F,G\in\Lambda$, 存在$X,Y\in\Lambda$, 满足$$FXY=X,$$ $$GXY=Y.$$}
+\begin{proof}
+    首先, 根据不动点定理, 存在$Y$使得$GXY=Y$, 这可以表示为$Y=\mathbf{Y}(GX)$, $\mathbf{Y}$为不动点组合子.
+	
+	那么现在只要证明, 对于任何$F,G\in\Lambda$, 存在$X\in\Lambda$, 满足$FX(\mathbf{Y}(GX))=X$.
+	
+	而 $FX(\mathbf{Y}(GX))=X\Rightarrow (\lambda x.Fx(\mathbf{Y}(Gx)))X=X$ (根据($\beta),(\sigma),(\tau$)), 于是$$X=\mathbf{Y}(\lambda x.Fx\mathbf{Y}(Gx)).$$
+	
+	也就是说, 令
+	
+	\begin{align*}
+		X=&\mathbf{Y}(\lambda x.Fx(\mathbf{Y}(Gx))),\\
+		Y=&\mathbf{Y}(G\mathbf{Y}(\lambda x.Fx(\mathbf{Y}(Gx))))
+	\end{align*}
+	
+	就可以让任何$F,G\in\Lambda$满足$FXY=X, GXY=Y$.
+\end{proof}

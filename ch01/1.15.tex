@@ -1,0 +1,17 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$满足:
+$$\protect\begin{aligned}
+   f(0)&=1,\\
+   f(1)&=4,\\
+   f(2)&=6,\\
+   f(x+3)&=f(x)+(f(x+1))^2+(f(x+2))^3,
+\protect\end{aligned}
+$$证明: $f\in\PRF$.}
+\begin{proof}
+    令$g(x)=\langle f(x),f(x+1),f(x+2)\rangle$, 那么有$f(x)=\ep_0(g(x)),g(0)=\langle 1,4,6\rangle,$
+
+    $$g(x+1)=\langle \ep_1(g(x)), \ep_2(g(x)), \ep_0(g(x))+(\ep_1(g(x)))^2+(\ep_2(g(x)))^3.$$
+
+    令$H(x)=\langle \ep_1(x), \ep_2(x), \ep_0(x)+(\ep_1(x))^2+(\ep_2(x))^2\rangle$, 那么有
+    $H(x)\in\PRF,g(x+1)=H(g(x))=H\circ P_2^2(x, g(x))$, 也就是$$g=\mathrm{Prim}^0[\langle 1,4,6\rangle, H\circ P_2^2],$$
+    所以$g(x)\in\PRF,$ 所以$f(x)\in\PRF$.
+\end{proof}

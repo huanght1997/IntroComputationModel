@@ -1,0 +1,20 @@
+\problem{令$D\equiv \lambda xyz.z(Ky)x$, 证明: 对于任意的$X,Y\in\Lambda$,
+$$\protect\begin{aligned}
+    DXY\churchnumber{0}&=X,\\
+    DXY\churchnumber{n+1}&=Y.
+\protect\end{aligned}
+$$
+这里$K\equiv \lambda xy.x,\churchnumber{n}\equiv \lambda fx.f^nx$.}
+\begin{proof}
+     $D XY\churchnumber{0} = \churchnumber{0} (\lambda y. Y) X = (\lambda fx. x) (\lambda y.Y) X = X$, 且
+ \[
+\begin{array}{rcl}
+ DXY\churchnumber{n+1} & = &
+  \churchnumber{n+1} (\lambda y. Y) X \\
+  &=& (\lambda fx. f^{n+1} x)(\lambda y.Y) X \\
+  &=& (\lambda x. (\lambda y.Y)^{n+1} x) X \\ 
+  &=& (\lambda x. (\lambda y.Y)^n Y)X \\
+  &=& (\lambda x. Y)X = Y.\\
+\end{array}
+  \]
+\end{proof}

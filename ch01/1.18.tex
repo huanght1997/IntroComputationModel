@@ -1,0 +1,13 @@
+\problem{设$k\in\mathbb{N}^+$, 函数$f:\mathbb{N}^k\to\mathbb{N}$和$g:\mathbb{N}^k\to\mathbb{N}$仅在有穷个点取不同值, 证明: $f$为递归函数当且仅当$g$为递归函数.}
+\begin{proof}
+    根据对称性, 只要证明$f$为递归函数可以推出$g$为递归函数即可.
+
+    由于$f$和$g$仅在有穷个点取不同值, 这些取不同值的点构成一个有穷的集合, 记为$\mathcal{S}$, 这样, $f(\vec{x})\neq g(\vec{x})$当且仅当$\vec{x}\in\mathcal{S}$, $f(\vec{x})=g(\vec{x})$当且仅当$\vec{x}\in\mathbb{N}^k-\mathcal{S}$.
+
+    设$\mathcal{S}$有$k$个元素, 那么其可表示为$\mathcal{S}=\{\vec{x}_1,\vec{x}_2,\cdots,\vec{x}_k\}$, 那么, 有
+    $$g(\vec{x})=f(\vec{x})(\prod_{i=1}^k \eq(\vec{x},\vec{x}_i))+\sum_{i=1}^k N(\eq(\vec{x},\vec{x}_i))g(\vec{x}_i)$$
+    上式中,$\eq$被扩展为$\mathbb{N}^a\times\mathbb{N}^a\to\mathbb{N}$的函数, 这不影响其依然是初等函数, 因为可以表示成
+	$$N^2(\sum_{i=1}^a \eq(P^a_i(\vec{x}), P^a_i(\vec{x}_i))).$$
+
+	因此, 若$f\in\GRF$, 即可得到$g\in\GRF$.
+\end{proof}

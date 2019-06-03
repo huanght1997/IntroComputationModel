@@ -1,0 +1,7 @@
+\problem{Euler函数$\varphi:\mathbb{N}\to\mathbb{N}$定义为 $$\varphi(n)=|\{x:0<x\leqslant n \land \gcd(x,n)=1\}|,$$ 即$\varphi(n)$表示小于等于$n$且与$n$互素的正整数个数. 例如$\varphi(1)=1$, 因为1与其本身互素; $\varphi(9)=6$, 因为9与1,2,4,5,7,8互素. 证明: $\varphi\in\EF$.}
+\begin{proof}
+    $$\varphi(n)=\sum_{i=1}^n N(\gcd(i,n)\dotdiv 1)$$
+    $$\gcd(x,y)=\max\{z:(z|x)\land (z|y)\}=\max z\leqslant x. [\rs(x,z) + \rs(y,z)]$$
+	
+    综上, $\varphi\in\EF$.
+\end{proof}

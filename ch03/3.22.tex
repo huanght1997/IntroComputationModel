@@ -1,0 +1,26 @@
+\problem{证明引理3.39.}
+
+引理3.39表述为:
+
+存在一般递归函数$\mathrm{var,app,abs,num}:\mathbb{N}\to\mathbb{N}$使得:
+\begin{enumerate}[label=(\arabic*)]
+    \item $\forall n\in\mathbb{N}. \mathrm{var}(n)=\sharp (v^{(n)});$\label{def:var}
+    \item $\forall M, N\in \Lambda. \mathrm{app}(\sharp M,\sharp N)=\sharp (MN);$\label{def:app}
+    \item $\forall x\in\nabla, M\in\Lambda. \mathrm{abs}(\sharp x, \sharp M) = \sharp(\lambda x. M);$]\label{def:abs}
+    \item $\forall n\in\mathbb{N}. \mathrm{num}(n)=\sharp\churchnumber{n}.$\label{def:num}
+\end{enumerate}
+
+\begin{proof}
+    只要函数$[x,y]$是一般递归函数, 那么由定义3.36可以得到\ref{def:var},\ref{def:app},\ref{def:abs}正确.
+    
+    对于\ref{def:num}, 
+    $$\begin{aligned}
+        \mathrm{num}(n)&=\sharp\churchnumber{n}\\
+        &=\sharp(\lambda fx.f^nx)\\
+        &=\sharp(\lambda f(\lambda x.f^nx))\\
+        &=[2,[\sharp f, \sharp (\lambda x.f^nx)]]\\
+        &=[2,[\sharp f, [2, [\sharp x, \sharp (f^nx)]]]],
+    \end{aligned}$$
+    
+    $\sharp f, \sharp x$应用\ref{def:var}, $\sharp (f^nx)$还应用\ref{def:app}之后, 可知$\mathrm{num}(n)$也是一般递归函数.
+\end{proof}

@@ -1,0 +1,4 @@
+\problem{设机器$\machine{f_1}$计算函数$f_1$, 机器$\machine{f_2}$计算函数$f_2$, 这里$f_1,f_2$为一元数论函数. 构造机器$\machine{f}$计算函数$f(x)=f_1(x)+f_2(x)$.}
+\begin{solution}
+$\machine{f}=\machine{copy_1}\concat \machine{f_1} \concat \machine{compress} \concat \machine{shiftl} \concat \machine{copy_2} \concat \machine{shiftr} \concat \machine{f_2} \concat\machine{compress} \concat\machine{shiftl}^2 \concat \machine{erase} \concat\machine{add}.$
+\end{solution}

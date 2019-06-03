@@ -1,0 +1,15 @@
+\problem{试找出$F\in\Lambdaclosed$使$F$ $\lambda$-定义函数$f(x)=3x$.}
+\begin{solution}
+     构造$F \churchnumber{n} = \churchnumber{3n} = \lambda fx. f^n (f^n (f^n x))$.
+
+\[
+ \begin{array}{rcl}
+  \lambda fx. f^n (f^n (f^n x)) & = & \lambda fx. f^n (f^n (\churchnumber{n} f x)) \\
+  & = & \lambda fx. f^n (\churchnumber{n} f (\churchnumber{n} f x)) \\
+  & = & \lambda fx. \churchnumber{n}f (\churchnumber{n} f (\churchnumber{n} f x)) \\
+  & = & [\lambda nfx. nf (nf (nfx))] \churchnumber{n}.
+ \end{array}
+\]
+
+因此, $F \equiv \lambda xyz. xy(xy(xyz))$ $\lambda$-定义函数$f(x)=3x$.
+\end{solution}

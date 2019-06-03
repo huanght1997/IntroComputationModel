@@ -1,0 +1,10 @@
+\problem{设$f(x)=h(g_1(x),g_2(x),g_3(x))$, 试由机器$\machine{g_1},\machine{g_2},\machine{g_3}$和$\machine{h}$构造机器$\machine{f}$.}
+\begin{solution}
+\begin{align*}
+    \machine{f}&=\machine{copy_1}\concat \machine{g_1} \concat \machine{compress} \concat \machine{shiftl}\\
+    &\concat \machine{copy_2} \concat \machine{shiftr} \concat \machine{g_2} \concat \machine{compress} \concat \machine{shiftl}^2 \\
+    &\concat \machine{copy_3} \concat \machine{shiftr}^2 \concat \machine{g_3} \concat \machine{compress} \concat \machine{shiftl}^3 \\
+    &\concat \machine{erase} \concat \machine{h}.
+\end{align*}
+
+\end{solution}

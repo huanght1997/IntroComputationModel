@@ -1,0 +1,17 @@
+\problem{证明:$\mathrm{Ack}(4,n)\in\PRF-\EF$, 其中$\mathrm{Ack}(x,y)$是Ackermann函数.}
+\begin{proof}
+    记$f(n)=\mathrm{Ack}(4,n)+3=\underbrace{2^{\cdot^{\cdot^{\cdot 2}}}}_{n+3\text{个}2}$.
+
+    令$g(x,y)=2^y$, 那么有$f(0)=2^{2^2},f(n+1)=g(n,f(n))$, 即$f=\mathrm{Prim}^0[2^{2^2},g]$,
+    因为$g\in\PRF$, 所以$f\in\PRF$, 自然$\mathrm{Ack}(4,n)\in\PRF$.
+
+    假设$f\in\EF$, 那么对于$\EF$的控制函数$G(k,x)=\underbrace{2^{2^{\cdot^{\cdot^{\cdot 2^x}}}}}_{k\text{个}2}$, 存在$k\in\mathbb{N}$使得$$\forall x\in\mathbb{N}.f(x)\leqslant G(k,x)$$.
+
+    然而, 令$x=2k$, 就有
+    $$f(2k)=\underbrace{2^{\cdot^{\cdot^{\cdot 2}}}}_{(2k+3)\text{个}2}=G(k,\underbrace{2^{\cdot^{\cdot^{\cdot 2}}}}_{k+3\text{个}2})>G(k,2k)=G(k,x),$$
+    矛盾, 故$f\notin\EF$.
+
+    而且, $\underbrace{2^{\cdot^{\cdot^{\cdot 2}}}}_{(2k+3)\text{个}2}-\underbrace{2^{\cdot^{\cdot^{\cdot 2k}}}}_{(k+1)\text{个}2}$在$k=0$时最小, 此时的值也大于3, 因此$\mathrm{Ack}(4,n)\notin\EF$.
+
+    综上, $\mathrm{Ack}(4,n)\in\PRF-\EF$.
+\end{proof}

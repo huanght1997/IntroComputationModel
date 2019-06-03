@@ -1,0 +1,19 @@
+\problem{证明：
+$$\min x\leqslant n. [f(x,\vec{y})]=n\dotdiv\max x\leqslant n. [f(n\dotdiv x,\vec{y})],$$
+$$\max x\leqslant n. [f(x,\vec{y})]=n\dotdiv\min x\leqslant n. [f(n\dotdiv x,\vec{y})].$$}
+\begin{proof}
+    分情况讨论.
+    \begin{enumerate}
+        \item 当$f(x,\vec{y})$在$[0,n]$有零点时, 设$\min x\leqslant n. [f(x,\vec{y})]=k$.
+
+        那么有$f(k)=0$, 从而$f(n\dotdiv(n\dotdiv k))=0$, $n\dotdiv k$是函数$f(n\dotdiv x)$的零点.
+    
+        因为$k$为$f(k)$最小的零点, 那么$n\dotdiv k$是$f(n\dotdiv x)$在$[0,n]$的最大零点. 因为如果有比$n\dotdiv k$大的$f(n\dotdiv x)$的零点$z$存在, 那么$f(n\dotdiv z)=0$且$n\dotdiv z<k$, 与$k$为$f(x)$最小零点矛盾.
+    
+        于是$\min x\leqslant n. [f(x,\vec{y})]=n\dotdiv\max x\leqslant n. [f(n\dotdiv x,\vec{y})]$成立.
+
+        \item 当$f(x,\vec{y})$在$[0,n]$没有零点时, $\min x\leqslant n. [f(x,\vec{y})]=n$, $\max x\leqslant n. [f(n\dotdiv x,\vec{y})] = 0$, 因此式子依然成立.
+    \end{enumerate}
+	
+    同理可证, $\max x\leqslant n. [f(x,\vec{y})]=n\dotdiv\min x\leqslant n. [f(n\dotdiv x,\vec{y})]$成立.
+\end{proof}

@@ -1,0 +1,23 @@
+\problem{证明: $\mathrm{Even}=\{2x:x\in\mathbb{N}\}$是Turing-可计算的.}
+\begin{proof}
+只要能够构造出这样的机器$M$, 它满足
+\begin{align*}
+    M|1:0\underset{\uparrow}{1}^{2x}0\cdots&\twoheadrightarrow u:0\cdots0\underset{\uparrow}{1}10\cdots\\
+    M|1:0\underset{\uparrow}{1}^{2x+1}0\cdots&\twoheadrightarrow v:0\cdots0\underset{\uparrow}{1}0\cdots
+\end{align*}
+
+构造如表\ref{tab:sol5.12}所示:
+\begin{table}[!htbp]
+\centering
+\caption{题5.12机器$M$}
+\label{tab:sol5.12}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &       0   &       1   \\\hline
+1   &   $1R3$   &   $0R2$   \\\hline
+2   &   $1O4$   &   $0R1$   \\\hline
+3   &   $1L4$   &           \\
+\thickhline
+\end{tabularx}
+\end{table}
+\end{proof}

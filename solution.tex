@@ -1,0 +1,163 @@
+\documentclass[a4paper,twoside]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage[UTF8,fontset=none]{ctex}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{longtable}
+%\setlength{\parindent}{2em}
+\input{config.tex}
+\setCJKmainfont[Path=fonts/, BoldFont=simhei.ttf, ItalicFont=simkai.ttf]{simsun.ttf}
+\makeatletter
+\def\thickhline{%
+  \noalign{\ifnum0=`}\fi\hrule \@height \thickarrayrulewidth \futurelet
+   \reserved@a\@thickhline}
+\def\@thickhline{\ifx\reserved@a\thickhline
+               \vskip\doublerulesep
+               \vskip-\thickarrayrulewidth
+             \fi
+      \ifnum0=`{\fi}}
+\makeatother
+
+\newlength{\thickarrayrulewidth}
+\setlength{\thickarrayrulewidth}{2\arrayrulewidth}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+% Page head
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead{} % clear all fields
+\fancyhead[CO]{《计算模型导引》作业}
+\fancyhead[CE]{第{\thesection}章 \leftmark}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+
+% Title
+\title{\bf 《计算模型导引》作业}
+\author{}
+\date{}
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+\begin{center}
+\bf\LARGE 声明
+\end{center}
+
+本习题解答与南京大学宋方敏教授编著的《计算模型导引》配套。
+
+所有习题解答都是经过本人的思考，与周围人的讨论，以及来自大佬的讲解得到，所以整个题解并未完成所有的题目，也不能保证答案的严谨性和正确性，因此仅供参考。由于使用此答案造成的任何后果，请自行承担，本人概不负责。
+
+本解答中许多灵感启发来自于蒋炎岩前辈提供的一份英文版参考解答，张强同学、李浩同学的解答，以及来自助教的解答，在此表示特别感谢。
+
+同时殷切盼望各位大佬能对这份解答做出哪怕一点微小的贡献，包括但不限于：尚未解出题目的解答，不同于已有解答的另外的解题方法，对已有解答描述不够严谨甚至是错误的部分的补充、纠正或指出，对已有解答推理或描述不够清晰部分的补充或指出，公式中的错误，错别字等。任何的补充指正和提问，都感激不尽。
+\thispagestyle{empty}
+\newpage
+\thispagestyle{empty}
+\setcounter{page}{1}
+% Chapter 1
+\section{递归函数}
+\input{ch01/1.01.tex}
+\input{ch01/1.02.tex}
+\input{ch01/1.03.tex}
+\input{ch01/1.04.tex}
+\input{ch01/1.05.tex}
+\input{ch01/1.06.tex}
+\input{ch01/1.07.tex}
+\input{ch01/1.08.tex}
+\input{ch01/1.09.tex}
+\input{ch01/1.10.tex}
+\input{ch01/1.11.tex}
+\input{ch01/1.12.tex}
+\input{ch01/1.13.tex}
+\input{ch01/1.14.tex}
+\input{ch01/1.15.tex}
+\input{ch01/1.16.tex}
+\input{ch01/1.17.tex}
+\input{ch01/1.18.tex}
+\input{ch01/1.19.tex}
+\input{ch01/1.20.tex}
+\input{ch01/1.21.tex}
+\input{ch01/1.22.tex}
+\input{ch01/1.23.tex}
+\input{ch01/1.24.tex}
+\input{ch01/1.25.tex}
+\newpage
+% Chapter 2
+\section{算盘机}
+\input{ch02/2.01.tex}
+\input{ch02/2.02.tex}
+\input{ch02/2.03.tex}
+\input{ch02/2.04.tex}
+\input{ch02/2.05.tex}
+\newpage
+% Chapter 3
+\section{$\lambda$-演算}
+\input{ch03/3.01.tex}
+\input{ch03/3.02.tex}
+\input{ch03/3.03.tex}
+\input{ch03/3.04.tex}
+\input{ch03/3.05.tex}
+\input{ch03/3.06.tex}
+\input{ch03/3.07.tex}
+\input{ch03/3.08.tex}
+\input{ch03/3.09.tex}
+\input{ch03/3.10.tex}
+\input{ch03/3.11.tex}
+\input{ch03/3.12.tex}
+\input{ch03/3.13.tex}
+\input{ch03/3.14.tex}
+\input{ch03/3.15.tex}
+\input{ch03/3.16.tex}
+\input{ch03/3.17.tex}
+\input{ch03/3.18.tex}
+\input{ch03/3.19.tex}
+\input{ch03/3.20.tex}
+\input{ch03/3.21.tex}
+\input{ch03/3.22.tex}
+\input{ch03/3.23.tex}
+\input{ch03/3.24.tex}
+\input{ch03/3.25.tex}
+\newpage
+\section{组合逻辑}
+\input{ch04/4.01.tex}
+\input{ch04/4.02.tex}
+\input{ch04/4.03.tex}
+\input{ch04/4.04.tex}
+\input{ch04/4.05.tex}
+\input{ch04/4.06.tex}
+\input{ch04/4.07.tex}
+\input{ch04/4.08.tex}
+\input{ch04/4.09.tex}
+\input{ch04/4.10.tex}
+\newpage
+\section{Turing机}
+\input{ch05/5.01.tex}
+\input{ch05/5.02.tex}
+\input{ch05/5.03.tex}
+\input{ch05/5.04.tex}
+\input{ch05/5.05.tex}
+\input{ch05/5.06.tex}
+\input{ch05/5.07.tex}
+\input{ch05/5.08.tex}
+\input{ch05/5.09.tex}
+\input{ch05/5.10.tex}
+\input{ch05/5.11.tex}
+\input{ch05/5.12.tex}
+\input{ch05/5.13.tex}
+\input{ch05/5.14.tex}
+\input{ch05/5.15.tex}
+\input{ch05/5.16.tex}
+\input{ch05/5.17.tex}
+\input{ch05/5.18.tex}
+\input{ch05/5.19.tex}
+\input{ch05/5.20.tex}
+\newpage
+\end{document}

@@ -1,0 +1,41 @@
+\problem{证明: 从本原函数出发, 经复合和算子$\displaystyle\prod_{i=n}^m[\cdot]$可以生成所有的初等函数. 这里$$\prod_{i=n}^m [f(i)] = 
+    \protect\begin{cases}
+        f(n)\cdot f(n+1)\cdot\quad\cdots\quad\cdot f(m), & \textrm{若}m\geqslant n,\\
+        1, & \textrm{若}m<n.
+    \protect\end{cases} $$}
+\begin{proof}
+    由初等函数的定义和引理1.12, 只需要证明$\ddot{-}$, 有界迭加算子$\Sigma[\cdot]$和有界迭乘算子$\Pi[\cdot]$能用复合以及算子$\displaystyle\prod_{i=n}^m[\cdot]$表示.
+
+    有界迭乘算子是算子$\displaystyle\prod_{i=n}^m[\cdot]$中$n=0$的特例.
+
+    首先不难构造出以下几个函数:
+
+    指数函数\footnote{这里约定$0^0=1$.}$$x^y=\prod_{i=1}^y[P_1^1(x)]$$
+	
+    取反函数$$N(x)=\prod_{i=1}^x[Z(i)]$$
+	
+    $x\leqslant y$的特征函数$$\mathrm{leq}(x,y)=\prod_{i=x}^y[Z(i)]$$
+	
+    $x\geqslant y$的特征函数$$\mathrm{geq}(x,y)=\prod_{i=y}^x[Z(i)]$$
+
+    然后:
+
+    $x=y$的特征函数$$\eq(x,y)=\mathrm{leq}(x,y)^{N(\mathrm{geq}(x,y))}$$
+    $$2^x=\prod_{i=1}^x[S\circ S\circ Z(i)]$$
+    
+    令$$\log(x)=\begin{cases}
+        \log_2x,&\textrm{若}\log_2x\in\mathbb{N},\\
+        1,&\textrm{否则.}
+    \end{cases}$$
+	
+    那么
+    $$\log(x)=\prod_{i=0}^x[i^{N(\eq(2^i,x))}]$$
+    $$\log(2^x)=\prod_{i=0}^{2^x}[i^{N(\eq(2^i,2^x))}]$$
+
+    所以
+    $$\sum_{i=n}^m f(i,\vec{x})=\log(2^{\sum_{i=n}^m f(i,\vec{x})})=\log(\prod_{i=n}^m 2^{f(i,\vec{x})})$$
+
+    $$x\ddot{-}y=\sum_{i=y+1}^x[S\circ Z(i)] + \sum_{i=x+1}^y[S\circ Z(i)]$$
+
+    综上, 证明完毕.
+\end{proof}

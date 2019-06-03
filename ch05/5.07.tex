@@ -1,0 +1,69 @@
+\problem{构造机器计算函数$f(x)=\lfloor\sqrt{x}\rfloor$.}
+\begin{solution}
+令$y=\lfloor\sqrt{x}\rfloor$, 那么有$y\leqslant \sqrt{x}<y+1$, 有$y^2\leqslant x<(y+1)^2$.
+
+因此$f(x)=\mu y.[x < (y+1)^2]$, 即表示在给定$x$的情况下使得$x<(y+1)^2$恒成立的最小$y$值. 由于$x,(y+1)^2\in\mathbb{N}$, 所以$x+1\leqslant (y+1)^2$.
+
+所以我们有$f(x)=\mu y. [S(x)\dotdiv \mathrm{sq}(S(y))]$. 其中, $\mathrm{sq}(x)=x^2$.
+
+函数sq可以通过$\machine{copy_1}\concat \machine{shiftl} \concat \machine{mul}$计算, 机器$\machine{mul}$即表\ref{tab:sol5.3}定义的机器, 计算$S$函数的机器$\machine{S}$已在书中给出, 计算$x\dotdiv y$的机器$\machine{sub}$见题5.11.
+
+因此总体思路如下:
+输入为$\overline{x}$, 整个转化过程为:
+
+$$\overline{x}\to \overline{(x+1, y)}\to \overline{(x+1, y, x+1, y)} \to \overline{(x+1, y, f(x+1,y))}$$
+
+当$f(x,y)$为0时, 抹掉$f(x,y)$和$x$, 指向$y$. 否则, 抹掉$f(x,y)$, $y$加1, 再复制一次$x,y$.
+
+先定义机器$M_0$如表\ref{tab:sol5.7m0}:
+\begin{table}[!htbp]
+\centering
+\caption{题5.7机器$M_0$}
+\label{tab:sol5.7m0}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &       0   &       1   \\\hline
+1   &   $1R2$   &   $1R1$   \\\hline
+2   &   $0R3$   &           \\\hline
+3   &   $1L4$   &           \\\hline
+4   &   $0L4$   &   $1L5$   \\\hline
+5   &   $0R6$   &   $1L5$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+易知$M_0|1:0\underset{\uparrow}{1}^{x+1}0\cdots\twoheadrightarrow 6:0\underset{\uparrow}{1}^{x+2}010\cdots$, 这完成了$\overline{x}\to \overline{(x+1, y)}$的步骤.
+
+$\overline{(x+1, y)}\to \overline{(x+1, y, x+1, y)}\to \overline{(x+1, y, f(x+1,y))}$的步骤由$\machine{copy_2}^2\concat \machine{f}\concat\machine{compress}$完成. $\machine{f}$计算函数$f(x,y)=x\dotdiv \mathrm{sq}(S(y))$(注意不是$S(x)$而是$x$, 因为加1操作已经在$M_0$完成), $\machine{f}=\machine{shiftr}\concat\machine{S}\concat\machine{copy_1}\concat\machine{shiftl}\concat\machine{mul}\concat\machine{compress}\concat\machine{shiftl}\concat\machine{sub}$.
+
+再定义机器$M_1$如表\ref{tab:sol5.7m1}:
+\begin{table}[!htbp]
+\centering
+\caption{题5.7机器$M_1$}
+\label{tab:sol5.7m1}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &       0   &       1   \\\hline
+1   &           &   $0R2$   \\\hline
+2   &   $0L8$   &   $0R3$   \\\hline
+3   &   $0L4$   &   $0R3$   \\\hline
+4   &   $0L4$   &   $1R5$   \\\hline
+5   &   $1L6$   &           \\\hline
+6   &   $0L7$   &   $1L6$   \\\hline
+7   &   $0R12$  &   $1L7$   \\\hline
+8   &   $0L8$   &   $1L9$   \\\hline
+9   &   $0L10$  &   $1L9$   \\\hline
+10  &   $0R11$  &   $0L10$  \\\hline
+11  &   $0R11$  &   $1Ou$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+易知:
+
+$M_1|1:01^{x+1}01^{y+1}0\underset{\uparrow}{1}0\cdots\twoheadrightarrow u:0^{x+3}\underset{\uparrow}{1}^{y+1}00\cdots$
+
+$M_1|1:01^{x+1}01^{y+1}0\underset{\uparrow}{1}^{z+1}0\cdots\twoheadrightarrow 12:0\underset{\uparrow}{1}^{x+1}01^{y+2}00\cdots(z>0)$
+
+那么, 令$M_2=\machine{copy_2}^2\concat\machine{f}\concat\machine{compress}\concat M_1$, $M_3=\mathrm{repeat}M_2$, 则机器$M=M_0\concat M_3$可以计算$f(x)=\lfloor \sqrt{x}\rfloor$.
+\end{solution}

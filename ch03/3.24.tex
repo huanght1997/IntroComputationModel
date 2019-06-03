@@ -1,0 +1,8 @@
+\problem{构造$H\in\Lambdaclosed$, 使得对于任意$n\in\mathbb{N}, x_1,\cdots, x_n\in\Lambda$, 有$$H\churchnumber{n}x_1\cdots x_n\equivbeta \lambda z.zx_1\cdots x_n.$$}
+\begin{proof}
+    可知我们需要找到$H$使得$H\churchnumber{n}=\lambda x_1x_2\cdots x_nz. zx_1\cdots x_n$.
+    我们可以令$M_n=\lambda x_1x_2\cdots x_nz. zx_1\cdots x_n$, 那么其编码$g(n)=\sharp M_n=[2,[\sharp x_1, \sharp (\lambda x_2\cdots x_n.zx_1\cdots x_n)]]$, 而$\sharp (zx_1\cdots x_n)$是递归的, 因此$g$是递归的. 设$G\in\Lambdaclosed$ $\lambda$-定义了$g$, 从而$G\churchnumber{n}\equivbeta\churchnumber{M_n}$, 因此
+    $$E(G\churchnumber{n})\equivbeta E\churchnumber{M_n}\equivbeta M_n$$
+    
+    取$H\equiv \lambda x.E(Gx)$即可.
+\end{proof}

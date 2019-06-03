@@ -1,0 +1,6 @@
+\problem{证明: 二元数论函数$x+y\notin\BF$.}
+\begin{proof}
+由1.2的结论可知, 若二元数论函数$f\in\BF$, 则存在自然数$h$使得$f(x,y)<\max\{x,y\}+h$恒成立.
+
+假设$x+y\in\BF$, 那么存在自然数$h$使得$x+y<\max\{x,y\}+h$恒成立. 因为$x+y=\max\{x,y\}+\min\{x,y\}$, 可推出该自然数$h$使得$\min\{x,y\}<h$对于任意的自然数$x,y$都成立, 这显然是错误的, 任给定一个$h$, 只需让$x,y$都大于$h$就可使不等式不成立. 所以$x+y\notin\BF$.
+\end{proof}

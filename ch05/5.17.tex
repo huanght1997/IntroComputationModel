@@ -1,0 +1,24 @@
+\problem{令$S=\{\sharp M:M\text{为Turing机}\}$, 证明$S$为Turing-可计算.}
+\begin{proof}
+	这相当于用一个Turing机来解码一个数判断其是否为合法的Turing机编码.
+	
+	首先确定机器的行数$k$, $k=\max a\leqslant \sharp M.P(a-1)|\sharp M$. $P(n)$代表第$n$个素数, $n$从0开始计数, 即$P(0)=2, P(1)=3, P(2)=5, \cdots$.
+	
+	然后是每一行的编码, $r_i=\ep(i,\sharp M)$.
+	
+	然后是对行内的元素进行解码, 对于机器的一行$\begin{array}{|c|c|c|}\hline j&xyz&uvw\\\hline\end{array}$, 可得
+	
+	$$\sharp j = \ep(0,r_i), \sharp x=\ep(1,r_i), \cdots, \sharp w=\ep(6,r_i)$$
+	
+	每个数都会得到一个结果, 但是结果需要合法:
+	
+	首先, 1和2肯定不合法.
+	
+	如果解析得到某行$\sharp x=2$, 则应该有$\sharp y=\sharp z=2$, 即$LLL$, 否则, $\sharp x < 2\land \sharp y\in\{2,3,4\}$. 其余情况均不合法.
+	
+	如果解析得到某行$\sharp u=4$, 则应该由$\sharp v=\sharp w=4$, 即$RRR$, 否则, $\sharp u < 2\land \sharp v\in\{2,3,4\}$. 其余情况均不合法.
+	
+	$\forall m,n\leqslant k, m\neq n. \sharp j(r_m)\neq \sharp_j(r_n)$. 即每一行的标号都不同.
+	
+	这里已经明确给出了计算流程, 显然我们可以通过编程在有限时间内输出某个自然数是否合法的Turing机编码, 其自然是Turing-可计算的.
+\end{proof}

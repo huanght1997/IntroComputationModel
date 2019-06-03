@@ -1,0 +1,9 @@
+\problem{(1) 什么是通用Turing机 (universal Turing machine)?\\
+(2) 通用Turing机起什么作用?}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 机器$U$是通用Turing机, 当其满足对任何机器$M$和任何$(n_1,\cdots,n_k)\in\mathbb{N}^k$,
+        $$M|\overline{(n_1,\cdots,n_k)}\twoheadrightarrow \overline{y}\Leftrightarrow U|\overline{(\sharp M, n_1, \cdots, n_k)}\twoheadrightarrow \overline{y}.$$
+        \item 其凭自身就能完成任何Turing机可能做到的任何事, 可以模拟任何其他Turing机, 在早期程序储存式计算机的研制中起到了重要的促进作用.
+    \end{enumerate}
+\end{solution}

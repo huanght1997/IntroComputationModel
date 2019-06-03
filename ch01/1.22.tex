@@ -1,0 +1,11 @@
+\problem{设$p(x)$为整系数多项式, 令$f:\mathbb{N}\to\mathbb{N}$定义为$f(a)=p(x)-a$对于$x$的非负整数根, 证明: $f\in\RF$.}
+\begin{proof}
+    令$p(x)=a_nx^n+\cdots+a_1x+a_0, \mathcal{P}=\{i|a_i>0\}, \mathcal{N}=\{i|a_i<0\}$, 有
+    $$|p(x)-a|=\sum_{i\in\mathcal{P}} |a_i|x^i \ddot{-} \left(a+\sum_{i\in\mathcal{N}} |a_i|x^i\right)$$
+	
+    此时$\ddot{-}$两边的式子都是正整系数多项式, 因此$|p(x)-a|\in\EF$.
+
+    而$f=\mu x.[|p(x)-a|]$, 即$f(a)$是让$|p(x)-a|=0$的最小解\footnote{题目中只是说明了$f(a)$对于$x$的非负整数根, 但$f(a)$的非负整数根可能不止一个, 此题可能有些问题.}($|p(x)-a|$处处有定义).
+
+    所以$f\in\RF$.
+\end{proof}

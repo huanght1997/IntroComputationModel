@@ -1,0 +1,13 @@
+\problem{证明: 对于固定的$k$, 一元数论函数$x+k\in\BF$.}
+\begin{proof}
+令$f_k(x)=x+k$.
+\begin{enumerate}
+\item 当$k=0$时, $f_0(x)=x=P_1^1(x)\in\IF$, 命题成立;
+\item 当$k=1$时, $f_1(x)=x+1=S(x)\in\IF$, 命题成立;
+\item 假设当$k=k_0(k_0\geqslant 1,k_0\in\mathbb{N})$时$f_{k_0}\in\BF$, 那么:
+
+当$k=k_0+1$时,$f_{k_0+1}=x+k_0+1=S(x+k_0)=S\circ f_{k_0}(x)=\mathrm{Comp}^1_1[S,f_{k_0}]\in\BF$.
+\end{enumerate}
+
+由数学归纳法可知, 命题成立.
+\end{proof}

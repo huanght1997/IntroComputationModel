@@ -1,0 +1,21 @@
+\problem{设机器$M_1$定义如表5.24.\\
+对于输入$\bar{x}$, 求输出.}
+\begin{table}[H]
+\centering
+\caption*{\textbf{表5.24}}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &  0    &      1   \\
+\hline
+1   & $0L3$ &   $1R2$   \\
+\hline
+2   & $0L3$ &   $0R1$   \\
+\hline
+3   & $0L3$ &   $1L3$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+\begin{solution}
+$M_1$的操作为如果读到1, 则交替写入1和0并令被指位置向右一位, 换句话说, 把第偶数次读到的1写成0, 读到0后一直向左倒带到最左边无法读取从而停机. 因此当其输入为$\bar{x}$时, 输出为$\overline{(\underbrace{0,0,\cdots,0}_{\left\lceil \frac{x+1}{2}\right\rceil\text{个}0})}$.
+\end{solution}

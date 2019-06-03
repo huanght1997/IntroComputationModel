@@ -1,0 +1,14 @@
+\problem{证明: 二元数论函数$x\dotdiv y\notin\BF$.}
+\begin{proof}
+假设$x\dotdiv y\in\BF$, 因为$\mathrm{pred}=\mathrm{Comp}_2^1[\dotdiv,P_1^1,S\circ Z]$, 所以$\mathrm{pred}\in\BF$. 所以, 要证明出题目的命题, 只要证明$\mathrm{pred}\notin\BF$即可.
+
+显然$\mathrm{pred}\notin\IF$, 那么若$\mathrm{pred}\in\BF$, 则$\mathrm{pred}$拥有最短构造过程, 设其为$f_0,f_1,\cdots,f_n,$ $\mathrm{pred}$. 显然,$\mathrm{pred}$是通过$f_0,f_1,\cdots,f_n$中的某些函数通过复合运算得来.
+
+$f_0,f_1,\cdots,f_n$中不可能出现投影函数$P$, 首先, 由于$\mathrm{pred}$是一元函数, 如果序列中投影函数, 它们的定义域为$\mathbb{N}^k$. 这个投影函数如若使用, 就必须接受$k$个自然数, 这$k$个自然数就只能表示成$g_1(x),g_2(x),\cdots,g_k(x)$的形式, $g_i(x)\in\BF,1\leqslant i\leqslant k$. 那么问题在于, 投影函数只会固定选用其中一个, $P_i^k$就只会选$g_i(x)$, 那么根本不用$P_i^k$的参与, 只用$g_i(x)$就能参与之后的构造, 所以对于一元函数的\textbf{最短}构造过程来说, 投影函数是无用的. 那么$f_0,f_1,\cdots,f_n$要么就是$S, Z$, 要么就是由$S, Z$复合而来.
+
+这样一来, 每一步构造都是$\mathbb{N}\to\mathbb{N}$. 在这时, 函数的复合满足结合律. 因此, $\mathrm{pred}$可表示成$F_1\circ F_2\circ \cdots \circ F_k$的形式, $F_i\in{S,Z}$.
+
+而$Z\circ F_i\circ \cdots \circ F_k=0$恒成立, 因此上式可表示成$S^a\circ Z^b$, 其中, $a\in\mathbb{N},b\in\{0,1\}$且$a,b$不同时为0. 这里$$F^a\equiv \underbrace{F\circ F\circ \cdots \circ F}_{a}$$
+
+当$a>0$时, 令$x=0$, 结果肯定不为0; 当$a=0$时, 式子就是$Z$, 同样不对. 因此$\mathrm{pred}\notin\BF$, 从而$x\dotdiv y\notin\BF$.
+\end{proof}

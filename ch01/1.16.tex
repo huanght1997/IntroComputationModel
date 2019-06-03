@@ -1,0 +1,35 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$满足:
+$$\protect\begin{aligned}
+    f(0)&=0,\\
+    f(1)&=1,\\
+    f(2)&=2^2,\\
+    f(3)&=3^{3^3},\\
+    \cdots&\cdots\cdots\cdots\\
+    f(n)&=\protect\underbrace{n^{\cdot^{\cdot^{\cdot n}}}}_{n\textrm{个}n},
+\protect\end{aligned}$$
+证明:$f\in\PRF-\EF$.}
+\begin{proof}
+    令$$g(n,m)=\underbrace{n^{\cdot^{\cdot^{\cdot n}}}}_{m\textrm{个}n},$$
+	
+    且$g(0,0)=0$, 那么$g(n,m+1)=n^{g(n,m)}$, 也就是说
+    $$g(n,0)=N^2(n),$$
+    $$g(n,m+1)=\mathrm{Comp}^2_2[\mathrm{pow},P^3_1,P^3_3](n,m,g(n,m))$$
+	
+    于是$$g=\mathrm{Prim}^1[N^2,\mathrm{Comp}^2_2[\mathrm{pow},P^3_1,P^3_3]],$$
+	
+    得到$g\in\PRF$, 而$f(n)=g(n,n)$,故$f\in\PRF$.
+
+    假设$f\in\EF$, 那么由定理1.34, 有
+    $$\exists k\in\mathbb{N}. \forall x\in\mathbb{N}. f(x)\leqslant G(k,x).$$
+	
+    其中$$G(0,x)=x,G(k,x)=\underbrace{2^{\cdot^{\cdot^{\cdot 2^x}}}}_{k\textrm{个}2}.$$
+	
+    取$x=k+2$, 那么当$k=0$时,$f(2)>G(0,2)$, 当$k>0$时, $$f(k+2)=\underbrace{(k+2)^{\cdot^{\cdot^{\cdot (k+2)}}}}_{(k+2)\textrm{个}(k+2)},$$
+    $$G(k,k+2)=\underbrace{2^{\cdot^{\cdot^{\cdot 2^{k+2}}}}}_{k\textrm{个}2},$$
+	
+    显然$$f(k+2)>\underbrace{(k+2)^{\cdot^{\cdot^{\cdot (k+2)}}}}_{(k+1)\textrm{个}(k+2)}>\underbrace{2^{\cdot^{\cdot^{\cdot 2^{k+2}}}}}_{k\textrm{个}2}=G(k,k+2),$$
+	
+    因此不存在$k$使得$\forall x\in\mathbb{N}. f(x)\leqslant G(k,x)$, 所以假设不成立, $f\notin\EF$.
+
+    综上, $f\in\PRF-\EF$.
+\end{proof}

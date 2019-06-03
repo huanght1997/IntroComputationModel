@@ -1,0 +1,18 @@
+\problem{证明定理3.41的证明过程中提到的$\lambda$-项$B$的存在性.}
+\begin{proof}
+We can compute $\mathbf{min}$ by a recursive procedure that keeps a table of variable substitution,
+ and log the minimum unused number in each abstraction operation (very complicated, though).
+ Since every function in $\PRF$ can be represented in $\lambda$-calculus,
+ $\mathbf{min}\in\Lambdaclosed$ exists.
+ Also, we have $\mathbf{minus}\in\Lambdaclosed$ such that 
+ $\mathbf{minus}\churchnumber{x}\churchnumber{y} = 
+ \churchnumber{|x-y|}$. Therefore, let
+\[
+ B = \lambda fxyz. \mathbf{D}(\mathbf{minus} (\mathbf{min}y) (\mathbf{min}z))x(fz),
+\]
+$F_{[\churchnumber{x}\mapsto x]} \equivbeta BFx\churchnumber{x}$
+is achieved. 
+
+
+
+\end{proof}

@@ -1,0 +1,16 @@
+\problem{设$$M(x)=\protect\begin{cases}
+    M(M(x+11)), & \textrm{若}x\leqslant 100,\\
+    x-10, & \textrm{若}x>100,
+\protect\end{cases}$$证明:
+$$M(x)=
+\protect\begin{cases}
+    91, & \textrm{若}x\leqslant 100,\\
+    x-10, & \textrm{否则}.
+\protect\end{cases}$$}
+\begin{proof}
+    显然, 我们只要证明当$0\leqslant x\leqslant 100$时, $M(x)=91$即可.
+
+    当$90\leqslant x \leqslant 100$时, $M(x)=M(M(x+11))=M(x+1)$, 因此$M(90)=M(91)=\cdots=M(100)=M(101)=91$, 注意$M(91)=91$;
+
+    当$0\leqslant x \leqslant 100$时, 存在自然数$k$使得$90\leqslant x+11k\leqslant 100$成立. 因此$M(x)=M^2(x+11\cdot1)=M^{k+1}(x+11k)=M^kM(x+11k)=M^k(91)=91$.
+\end{proof}

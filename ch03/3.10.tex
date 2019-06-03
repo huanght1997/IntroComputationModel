@@ -1,0 +1,35 @@
+\problem{证明定理3.12.}
+定理3.12表述为:
+
+对任何$M,N\in\Lambda$,$$M\equivbeta N\Leftrightarrow \lambda\beta\vdash M=N.$$
+\begin{proof}
+    $\lambda\beta$的公理表明$M=M$, $(\lambda x.M)N=M[x:=N]$. 
+	
+	由于$\beta\equiv\{((\lambda x.M)N, M[x:=N]):M,N\in\Lambda\land x\in \nabla\}$, 故$(\lambda x.M)N\equivbeta M[x:=N]$.
+	
+	由于$=_{\beta}$是自反的, 故$M\equivbeta M$.
+	
+	假设对于所有构造长度不大于$\ell$的公式$M=N$都有$\lambda\beta\vdash M=N\Rightarrow M\equivbeta N$. 那么对于构造长度为$\ell+1$的公式, 有:
+	
+	\begin{enumerate}
+		\item $(\sigma): M=N\vdash N=M$, 由于$\equivbeta$是对称的, 因此$N\equivbeta M$成立.
+		\item $(\tau): M=N,N=L\vdash M=L$, 由于$\equivbeta$是传递的, 因此$M\equivbeta L$成立.
+		\item $(\mu): M=N\vdash ZM=ZN$, 由于$\equivbeta$是合拍的, 因此$ZM\equivbeta ZN$也成立.
+		\item $(\nu): M=N\vdash MZ=NZ$, 由于$\equivbeta$是合拍的, 因此$MZ\equivbeta NZ$也成立.
+		\item $(\xi): M=N\vdash \lambda x.M=\lambda x.N$, 由于$\equivbeta$是合拍的, 因此$\lambda x.M=\lambda x.N$也成立.
+	\end{enumerate}
+	
+	因此, $\lambda\beta\vdash M=N\Rightarrow M\equivbeta N$.
+	
+	现在证明$M\equivbeta N\Rightarrow \lambda\beta\vdash M=N$.
+	
+	$M\equivbeta N$要么满足$(M,N)\in\beta$, 这时由二元关系$\beta$的定义知$M=N$; 要么$(M,N)$在${(M',N')}$的合拍闭包中, 其中$(M',N')\in\beta$.
+	
+	由题3.9可知, 对所有$M\equivbeta N$, 存在$n\in\mathbb{N}$以及$P_0,\cdots,P_n\in\Lambda$,满足$M\equiv P_0, N\equiv P_n$, 对任何$i<n$, $P_i\onestepbeta P_{i+1}$或$P_{i+1}\onestepbeta P_i$.
+	
+	当$n=0$时, $M\equivbeta M\Rightarrow \lambda\beta\vdash M=M$由自反性知显然成立.
+	
+	那么当$n=k$时, 我们假设构造长度为$m(m<n)$时, 所有$A\equivbeta B\Rightarrow \lambda\beta\vdash M=M$. 这样的话, 对于构造序列$M=P_0,\cdots,P_{n-1},P_n=N$, 有$\lambda\beta\vdash M=P_{n-1}$. 因为$P_{n-1}\onestepbeta P_n$或$P_n\onestepbeta P_{n-1}$就是说$\lambda\beta\vdash P_{n-1}=P_n$, 由$(\tau)$, $\lambda\beta\vdash M=P_{n-1}=P_n=N$. 所以$M\equivbeta N\Rightarrow \lambda\beta\vdash M=N$.
+	
+	综上, 命题成立.
+\end{proof}

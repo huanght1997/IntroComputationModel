@@ -1,0 +1,29 @@
+\problem{构造机器计算函数$f(x,y)=x\dotdiv y$.}
+\begin{solution}
+基本思想: $x$和$y$每回各消去1, 直到有一个为0为止.
+$f(x,y)=x\dotdiv y$由表\ref{tab:sol5.11}定义的机器$\machine{sub}$计算:
+\begin{table}[!htbp]
+\centering
+\caption{题5.11机器$\machine{sub}$}
+\label{tab:sol5.11}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &       0   &       1   \\\hline
+1   &           &   $0R2$   \\\hline
+2   &   $0R8$   &   $1R3$   \\\hline
+3   &   $0R4$   &   $1R3$   \\\hline
+4   &   $0R4$   &   $0R5$   \\\hline
+5   &   $0L10$  &   $1L6$   \\\hline
+6   &   $0L6$   &   $1L7$   \\\hline
+7   &   $0R1$   &   $1L7$   \\\hline
+8   &   $0R8$   &   $0R9$   \\\hline
+9   &   $1O13$  &   $0R9$   \\\hline
+10  &   $0L10$  &   $1R11$  \\\hline
+11  &   $1L12$  &           \\\hline
+12  &   $0R13$  &   $1L12$  \\\hline
+\thickhline
+\end{tabularx}
+\end{table}
+
+对于$\machine{sub}$输入$1:0\underset{\uparrow}{1}^{x+1}01^{y+1}0\cdots$, 在$x\leqslant y$时输出$13:0^{x+y+4}\underset{\uparrow}{1}0\cdots$, 在$x>y$时输出$13:0^{y+2}\underset{\uparrow}{1}^{x-y+1}0\cdots$.
+\end{solution}

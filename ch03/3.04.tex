@@ -1,0 +1,9 @@
+\problem{设$F\in\Lambda$呈形$\lambda x.M$, 证明:\\
+    (1) $\lambda z.Fz\equivbeta F$;\\
+    (2) $\lambda z.yz\neq_\beta y$. \\
+注意, 对于一般的$F$, $\lambda z.Fz\neq_\beta F$, 但$\lambda z.Fz=_{\eta} F$.}
+\begin{proof}
+    $\lambda z.Fz\equiv \lambda z.(\lambda x.M)z\equivbeta \lambda z.M[x:=z]\equiv M$.
+	
+	$\lambda z.yz$本身已是$\bnf$, 其无法$\beta$-归约到$y$.
+\end{proof}

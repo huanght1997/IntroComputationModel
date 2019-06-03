@@ -1,0 +1,10 @@
+\problem{设数论谓词$Q(x,y,z,v)$定义为
+$$Q(x,y,z,v)\equiv p(\langle x,y,z \rangle)|v,$$
+其中$p(n)$代表第$n$个素数, $\langle x,y,z \rangle$是$x,y,z$的G\"odel编码. 证明: $Q(x,y,z,v)$是初等的.}
+\begin{proof}
+    $Q(x,y,z,v)$的特征函数为
+    $$\chi_Q(x,y,z,v)=N^2(\rs(v,p(\langle x,y,z \rangle))),$$
+	
+    因为$\langle x,y,z \rangle=2^x3^y5^z\in\EF,N^2,\rs,p\in\EF$,
+    所以$\chi_Q(x,y,z,v)\in\EF$, 所以$Q(x,y,z,v)$是初等的.
+\end{proof}

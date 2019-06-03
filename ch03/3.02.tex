@@ -1,0 +1,20 @@
+\problem{试求$SSSS$的$\bnf$.}
+\begin{solution}
+    根据定义, $S\equiv \lambda xyz.xz(yz)$, 那么
+    \begin{align*}
+        SS&\equivbeta \lambda yz.Sz(yz)\\
+        &\equivbeta \lambda yz.\lambda f.zf((yz)f)\\
+        &\equiv \lambda yzf.zf(yzf)\\
+        &\equiv \lambda xyz.yz(xyz)
+    \end{align*}
+
+    而
+    \begin{align*}
+        SSSS &\equivbeta SS(SS)\\
+        &\equivbeta \lambda yz.yz(SSyz)\\
+        &\equivbeta \lambda yz.yz(\lambda f.zf(yzf))\\
+        &\equiv \lambda xy.xy(\lambda z.yz(xyz))\tag{*}
+    \end{align*}
+
+    到了(*)式后, 已经没有含有$\beta$-可约式的子项, 故(*)式即为$SSSS$的$\bnf$.
+\end{solution}

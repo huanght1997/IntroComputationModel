@@ -1,0 +1,50 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$定义为$$f(n)=\pi\text{的十进制展开式中第}n\text{位数字}.$$
+例如$f(0)=3,f(1)=1,f(2)=4$. 证明: $f\in\GRF$.}
+\begin{proof}
+    由Hutton's Formula\footnote{实际上, 类似Hutton's Formula的公式还有许多, 应用最广泛的是梅钦公式(Machin's Formula), 这一类公式因此也被称为类梅钦公式(Machin-like Formulas), 详见\texttt{http://mathworld.wolfram.com/Machin-LikeFormulas.html}}知, $\frac{\pi}{4}=2\arctan(\frac13)+\arctan(\frac17)$.
+
+    而$$\arctan x=\int_0^x\frac{1}{1+t^2}\mathrm{d}t,$$
+
+    $\frac{1}{1+t^2}$应用牛顿广义二项式定理\footnote{$(x+y)^{\alpha }=\sum _{{k=0}}^{\infty }\binom{\alpha}{k}x^{{\alpha -k}}y^{k}. $其中$\binom{\alpha}{k}=\frac{\alpha(\alpha-1)\cdots(\alpha-k+1)}{k!}$}展开, $k=n$之后的项利用等比数列求和公式, 得到: $$\frac{1}{1+t^2}=\sum_{i=0}^n[(-1)^ix^{2i}]+\frac{(-1)^{n+1}x^{2n+2}}{1+x^2}$$
+
+    因此\begin{align*}
+    \arctan x &=\sum_{i=0}^n (-1)^i \int_0^xt^{2i}\mathrm{d}t+\int_0^x\frac{(-1)^{n+1}}{1+t^2}t^{2n+2}\mathrm{d}t\\
+    &=\sum_{i=0}^n(-1)^i\frac{x^{2i+1}}{2i+1}+\int_0^x\frac{(-1)^{n+1}}{1+t^2}t^{2n+2}\mathrm{d}t\tag{*}
+    \end{align*}
+
+    为了让余项为正且估计更加精确, 在(*)中取$n=2k+1$.
+
+    \begin{align*}
+        \pi &= 8\arctan(\frac{1}{3})+4\arctan(\frac{1}{7})\\
+        &=8\sum_{i=0}^{2k+1}(-1)^i\frac{1}{(2i+1)3^{2i+1}}+8\int_0^{\frac{1}{3}}\frac{t^{4k+4}}{1+t^2}\mathrm{d}t\\
+        &+4\sum_{i=0}^{2k+1}(-1)^i\frac{1}{(2i+1)7^{2i+1}}+4\int_0^{\frac{1}{7}}\frac{t^{4k+4}}{1+t^2}\mathrm{d}t
+    \end{align*}
+
+    令
+    \begin{align*}
+        t_k &=8\sum_{i=0}^{2k+1}(-1)^i\frac{1}{(2i+1)3^{2i+1}}+4\sum_{i=0}^{2k+1}(-1)^i\frac{1}{(2i+1)7^{2i+1}}\\
+        r_k &=8\int_0^{\frac{1}{3}}\frac{t^{4k+4}}{1+t^2}\mathrm{d}t+4\int_0^{\frac{1}{7}}\frac{t^{4k+4}}{1+t^2}\mathrm{d}t\\
+        &\leqslant8\int_0^{\frac{1}{3}}t^{4k+4}\mathrm{d}t+4\int_0^{\frac{1}{7}}t^{4k+4}\mathrm{d}t\\
+        &=8\cdot \frac{1}{3^{4k+5}\cdot (4k+5)}+4\cdot\frac{1}{7^{4k+5}\cdot(4k+5)}\\
+        &< 8\cdot\frac13\cdot\frac{1}{3^{4k+4}}+4\cdot\frac17\cdot\frac{1}{7^{4k+4}}\leqslant \frac{1}{3^{4k}}\leqslant \frac{1}{80^k}
+    \end{align*}
+
+    于是$\pi=t_k+r_k$, 且$0<r_k<\frac{1}{80^k}$. $t_k$无论$k$取多少都为有理数. 这样的话, 我们取$t_k$的第$k$位为$\pi$的第$k$位时, 由于$10^kt_k<10^k\pi=10^k(t_k+r_k)<10^kt_k+\frac{1}{8^k}\leqslant 10^kt_k+1$, 这样的误差会使得当$t_k$的第$k$位为9以外的数时, 其前面的结果都是准确无误的. (比如, 当我们知道$3.14<\pi<3.15$时, 我们可以保证3.1是正确的. 但是思考0.9999...的情形, 它的确实结果是1, 从第0位开始就错了)
+
+    现在要求当$t_k$的第$k$位为9时, 其前面的结果也准确无误. 可以发现, 如果此时$t_{k+1}$的第$k+1$位非9时, 由于精度更进了一层, 所以$\pi$的第$k$位就必然为9. 由数学归纳法可知, 当$t_{k}$的第$k$位非9时, 必然能保证其估计的$\pi$值的前$k$位均正确. 但是, 如果从第$l$位出现连续的9, 那么就无法确定第$l-1$位是$t_{l-1}$的第$l+1$位还是它的值加1. 设$t_k$的十进制展开式为
+    $$t_k=a_{k,0}a_{k,1}a_{k,2}\cdots a_{k,n}\cdots$$
+
+    现在需要证明, 对于任意的$n\in\mathbb{N}$, 存在$l\geqslant n+1$使得$t_l$满足以下数字不全为9: $a_{l,n+1},a_{l,n+2},\cdots,a_{l,l}$. 这样做就能保证我们那个非9所在位之前的数均是正确的.
+
+    假设这样的$l$不存在, 那么这意味着从第$n+1$位起, 后面的数字均为9, 出现了循环, 那么这就说明$\pi$是有理数, 矛盾. 因此上面的命题是正确的.
+
+    这样还能带来一个好处, 就是取第$k$位时, 第$k$位也是正确的, 因为0.9999...的情形不用再考虑了, 当知道$2.9<a<3$时, 我们也能确定$a$展开式以2.9开头.
+
+    令$l=l(n)=\mu l.[l\geqslant n+1$且在$a_{l,n+1},\cdots,a_{l,l}$并不全为9$]$,$a(l,i)=a_{l,i}=t_l$展开式的第$i$个数字$=\rs(\lfloor t_l\cdot 10^i\rfloor,10)\in\EF$.
+
+    现在能保证$t_l$展开式中$l$所在位及其之前的数均正确, 即$f(n)=a(l,n)$. 而
+    $$l(n)=\mu l.\left[(l\geqslant n+1)\land \prod_{i=n+1}^l[a_{l,i}\ddot{-}9\neq 0]\right]\in\GRF.\footnote{若知道$\pi$的展开式中连续9的个数有上界, 则$l(n)\in\EF$.}$$
+
+    因此
+    $$f(n)=a(l(n),n)\in\GRF.$$
+\end{proof}

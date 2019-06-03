@@ -1,0 +1,119 @@
+\problem{构造机器计算函数$f(x)=2^x$.}
+\begin{solution}
+由定理5.13的证明过程, 可如此构造:
+
+令$f(x,y)=2^xy$, 令$y$恒为1, $g(x)=2x$, 即可计算$f(x)=2^x$.
+
+首先, 构造出初始值($y$)1, 使用机器$M_1$, 定义如表\ref{tab:sol5.4m1}:
+\begin{table}[!htbp]
+\centering
+\caption{题5.4机器$M_1$}
+\label{tab:sol5.4m1}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &  0    &      1   \\
+\hline
+1   & $0R2$ &   $1R1$   \\
+\hline
+2   & $1R3$ &           \\
+\hline
+3   & $1L4$ &           \\
+\hline
+4   &       &   $1L5$   \\
+\hline
+5   & $0L6$ &           \\
+\hline
+6   & $0R7$ &   $1L6$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+易知$M_1|1:0\underset{\uparrow}{1}^{x+1}00\cdots\twoheadrightarrow7:0\underset{\uparrow}{1}^{x+1}01100\cdots$.
+
+定义机器$M_2$为表\ref{tab:sol5.4m2}:
+\begin{table}[!htbp]
+\centering
+\caption{题5.4机器$M_2$}
+\label{tab:sol5.4m2}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &  0    &      1   \\
+\hline
+1   &       &   $0R2$   \\
+\hline
+2   & $0Ru$ &   $1R3$   \\
+\hline
+3   & $0R4$ &   $1R3$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+易知$x>0$时$M_2|1:0\underset{\uparrow}{1}^{x+1}01100\cdots\twoheadrightarrow 4:001^{x}0\underset{\uparrow}{1}100\cdots$ (在$x=0$时输出为$u:000\underset{\uparrow}{1}100\cdots$).
+
+令$M_3=M_2\concat \machine{double} + 3\concat \machine{compress}\concat \machine{shiftl}$, $M_4=\mathrm{repeat}M_3$, 机器$\machine{f}=M_1\concat M_4$为所求.
+
+而整个的机器如表\ref{tab:sol5.4}所示.
+\begin{table}[!htbp]
+\centering
+\caption{题5.4机器$\machine{f}$}
+\label{tab:sol5.4}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &       0   &       1   \\
+\hline
+1   &   $0R2$   &   $1R1$   \\
+\hline
+2   &   $1R3$   &           \\
+\hline
+3   &   $1L4$   &           \\
+\hline
+4   &           &   $1L5$   \\
+\hline
+5   &   $0L6$   &           \\
+\hline
+6   &   $0R7$   &   $1L6$   \\
+\hline
+7   &           &   $0R8$   \\
+\hline
+8   &   $0R27$  &   $1R9$   \\
+\hline
+9   &   $0R10$  &   $1R9$   \\
+\hline
+10  &           &   $1R11$  \\
+\hline
+11  &   $0R12$  &   $1R11$  \\
+\hline
+12  &   $1R13$  &   $1R12$  \\
+\hline
+13  &   $1R14$  &           \\
+\hline
+14  &   $0L15$  &           \\
+\hline
+15  &   $0L16$  &   $1L15$  \\
+\hline
+16  &   $0R17$  &   $1L16$  \\
+\hline
+17  &   $0R18$  &   $1O10$  \\
+\hline
+18  &           &   $0R19$  \\
+\hline
+19  &           &   $1L20$  \\
+\hline
+20  &   $1L21$  &   $0R25$  \\
+\hline
+21  &   $0R22$  &   $1R20$  \\
+\hline
+22  &   $0L23$  &   $1R22$  \\
+\hline
+23  &           &   $0L24$  \\
+\hline
+24  &   $0R19$  &   $1L24$  \\
+\hline
+25  &   $0L26$  &   $1L25$  \\
+\hline
+26  &   $0R7$   &   $1L26$  \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+\end{solution}

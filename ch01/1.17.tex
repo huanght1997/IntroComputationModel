@@ -1,0 +1,37 @@
+\problem{设$g:\mathbb{N}\to\mathbb{N}\in\PRF,f:\mathbb{N}^2\to\mathbb{N}$, 满足
+$$\protect\begin{aligned}
+    f(x,0)&=g(x),\\
+    f(x,y+1)&=f(f(\cdots f(f(x,y),y-1),\cdots),0),
+   \protect\end{aligned}
+$$证明:$f\in\PRF$.}
+\begin{proof}
+    先证明$f(x,y)=g^{2^{y-1}}(x)$当$y\geqslant 1$时成立.
+
+    当$y=1$时, $f(x,y)=f(x,0)=g(x)$, 成立;
+
+    假设当$y\leqslant k$时命题成立, 那么有$f(x,y)=g^{2^{y-1}}(x)$在$1\leqslant y\leqslant k$时对任意的$x\in\mathbb{N}$均成立.
+
+    当$y=k+1$时, $$\begin{aligned}
+        f(x,k+1)&=f(f(\cdots f(f(x,k),k-1),\cdots),0)\\
+        &=f(f(\cdots f(g^{2^{k-1}}(x),k-1),\cdots), 0)\\
+        &=f(f(\cdots g^{2^{k-2}}(g^{2^{k-1}}(x)),\cdots), 0)\\
+        &=f(g^{2^0}\circ g^{2^1}\circ \cdots \circ g^{2^{k-2}}\circ g^{2^{k-1}}(x),0)\\
+        &=g(g^{\frac{1-2^k}{1-2}}(x))\\
+        &=g^{2^k}(x)
+    \end{aligned}$$
+	
+    由数学归纳法可知, $f(x,y)=g^{2^{y-1}}(x)$.
+    
+    现在只要证明$g^{2^{y-1}}(x)\in\PRF$.
+
+    由于$g(x)\in\PRF$, 所以$G(x,n)=g^n(x)\in\PRF$(由定义1.27可知$G(x,n)\in\mathcal{ITF}$, 而$\mathcal{ITF}=\PRF$). 所以只要证明$$F(y)=\begin{cases}
+        2^{y-1},&y>0\\
+        1,&y=0,
+    \end{cases}$$
+	
+	$F(y)\in\PRF$即可.
+    而$$F(y)=\left\lfloor\frac{2^yN^2(y)+2N(y)}{2}\right\rfloor,$$
+	
+	所以$F(y)\in\PRF$.
+    综上, $f\in\PRF$.
+\end{proof}

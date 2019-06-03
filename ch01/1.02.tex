@@ -1,0 +1,20 @@
+\problem{证明: 对任意$k\in\mathbb{N}^+,f:\mathbb{N}^k\to\mathbb{N}$, 若$f\in\BF$, 则存在$h$, 使得$$f(\vec{x})<\|\vec{x}\|+h.$$其中$\|x\|\equiv\max\{x_i:1\leqslant i\leqslant k\}$.}
+\begin{proof}
+分情况讨论.
+\begin{enumerate}
+\item 当$f\in\IF$时, 由于$S(x)=x+1<\|x\|+2,Z(x)=0<\|x\|+2,P(\vec{x})\leqslant\|\vec{x}\|<\|\vec{x}\|+2$, 所以令$h=2$即可让题中式子对于$f\in\IF$均成立;
+\item 当$f\in\BF-\IF$时, 假设$f$的构造长度$\ell$满足$0\leqslant l \leqslant k$时, 命题均成立, 那么对这样的函数$f$, 必然存在一个自然数$h_k$使得$f(\vec{x})<\|\vec{x}\|+h_k$恒成立. 对于$f\in\IF$, 其构造长度可视为0, 故令$h_0=2$.
+
+当$f$的构造长度为$k+1$时, 设其构造过程为数论函数序列$f_0,f_1,\cdots,f_k,f$, 那么对于任一函数$f_i(0\leqslant i\leqslant k)$, 其构造长度不大于$i$, 自然也不大于$k$, 所以有
+\begin{equation}\label{eq1.2.1}
+\begin{split}
+	f&=\mathrm{Comp}_n^m[f_{i_0},f_{i_1},\cdots,f_{i_n}]\\
+	 &=f_{i_0}(f_{i_1}(\vec{x}),\cdots,f_{i_n}(\vec{x}))\\
+	 &<\|f_{i_1}(\vec{x}),\cdots,f_{i_n}(\vec{x})\|+h_k
+\end{split}
+\end{equation}
+其中$f_{i_0},f_{i_1},\cdots,f_{i_n}$从$f_0,f_1,\cdots,f_k$中选择(可重复), 所以式(\ref{eq1.2.1})最后出现的$f_{i_1}(\vec{x}),$ $\cdots,$ $f_{i_n}(\vec{x})$的所有值均小于$\|\vec{x}\|+h_k$, 可得$\|f_{i_1}(\vec{x}),\cdots,f_{i_n}(\vec{x})\|<\|\vec{x}\|+h_k$, 因此$f<\|\vec{x}\|+2h_k$, 也就是说, 当$f$的构造长度$l$满足$0\leqslant l\leqslant k+1$时, $f(\vec{x})<\|\vec{x}\|+2h_k$恒成立, 即$h_{k+1}=2h_k$是满足要求的.
+\end{enumerate}
+
+又因为$h_0=2$, 可得$h_k=2^{k+1}$对于构造长度不大于$k$的函数都能使不等式$f(\vec{x})<\|\vec{x}\|+h_k$恒成立. 而对一个特定的$f\in\BF$, 它肯定有一个构造长度$\ell$, 所以令$h=2^{\ell+1}$即可使得题中不等式成立.
+\end{proof}

@@ -1,0 +1,40 @@
+\problem{证明:$$f(n)=\left\lfloor\left(\frac{\sqrt{5}+1}{2}\right)n\right\rfloor$$为初等函数.}
+\begin{proof}
+    因为$\frac{\sqrt{5}+1}{2}\leqslant 2$, 所以$f(n)\leqslant 2n$, 也就是说
+    $$f(n)=\max x\leqslant 2n. \left[x\leqslant \left(\frac{\sqrt{5}+1}{2}\right)n\right]$$
+	
+    即在$[0,2n]$内不大于$\left(\frac{\sqrt{5}+1}{2}\right)$的最大自然数.
+    $$\begin{aligned}
+        x&\leqslant \left(\frac{\sqrt{5}+1}{2}\right)n\\
+        \Leftrightarrow &2x\leqslant (\sqrt{5}+1)n\\
+        \Leftrightarrow &2x-n\leqslant \sqrt{5}n\\
+        \Leftrightarrow &4x^2-4xn+n^2\leqslant 5n^2\\
+        \Leftrightarrow &x^2-xn-n^2\leq 0\\
+        \Leftrightarrow &x^2\dotdiv xn\dotdiv n^2 = 0
+    \end{aligned}$$
+	
+    所以$f(n)=\max x\leqslant 2n.[N^2(x^2\dotdiv xn\dotdiv n^2)]\in\EF$.
+\end{proof}
+\iffalse
+\subsubsection{$f(n)=\left\lfloor\left(\frac{\sqrt{5}+1}{2}\right)^n\right\rfloor\in\EF.$}
+    依照宋公的说法, 题目本来是$f(n)=\left\lfloor\left(\frac{\sqrt{5}+1}{2}\right)^n\right\rfloor$的, 以下给出证明:
+\begin{proof}
+    因为$\frac{\sqrt{5}+1}{2}\leqslant 2$, 所以$f(n)\leqslant 2^n$, 也就是说
+    $$f(n)=\max x\leqslant 2^n. \left[x\leqslant \left(\frac{\sqrt{5}+1}{2}\right)^n\right]$$
+    $$\begin{aligned}
+        x&\leqslant \left(\frac{\sqrt{5}+1}{2}\right)^n\\
+        \Leftrightarrow &2^nx\leqslant (\sqrt{5}+1)^n\\
+        \Leftrightarrow &2^{2n}x^2\leqslant (\sqrt{5}+1)^{2n}\\
+        \Leftrightarrow &2^{2n}x^2\leqslant \sum_{i=0}^{2n}{2n \choose i}(\sqrt{5})^{2n-1}
+    \end{aligned}$$
+    而
+    $$\sum_{i=0}^{2n}{2n \choose i}(\sqrt{5})^{2n-1}=\sum_{i=0}^{n} {2n \choose 2i} 5^{n-i}+\sum_{i=0}^{n-1}{2n \choose 2i+1}5^{n-i-1}\cdot \sqrt{5}$$
+    令$g_1(n)=\sum_{i=0}^{n} {2n \choose 2i} 5^{n-i}$, $g_2(n)=\sum_{i=0}^{n-1}{2n \choose 2i+1}5^{n-i-1}$, 易证$g_1,g_2\in\EF$.
+
+    故需要证明$2^{2n}x^2\leqslant g_1(n)+g_2(n)\cdot\sqrt{5}$是初等数论谓词.
+    $$\begin{aligned}
+        2^{2n}x^2&\leqslant g_1(n)+g_2(n)\cdot\sqrt{5}\\
+        \Rightarrow (2^{2n}x^2-g_1(n))^2\leqslant (g_1(n))^2\cdot 5
+    \end{aligned}$$
+\end{proof}
+\fi

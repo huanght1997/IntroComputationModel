@@ -1,0 +1,12 @@
+\problem{证明: 对任何$P,Q\in\Lambda$, 若$P\manystepbeta Q$, 则存在$n\geq 0$以及$P_0,\cdots,P_n\in\Lambda$,满足\\
+(1) $P\equiv P_0$;\\
+(2) $Q\equiv P_n$;\\
+(3) 对任何$i<n, P_i\onestepbeta P_{i+1}$.}
+\begin{proof}
+    由于关系$\manystepbeta$是关系$\onestepbeta$的自反传递闭包, 因此对于所有的$P,Q\in\Lambda$, 
+	$$\manystepbeta=\bigcup_{i\in\mathbb{N}} (\onestepbeta)^i.$$
+	
+	因此, $P\manystepbeta Q$可以等价地表述为: 存在$n\in\mathbb{N}$, 使得$P(\onestepbeta)^n Q$.
+	
+	因此, 对任意$i=1,2,\cdots, n-1$, 令$P(\onestepbeta)^iP_i$, 即可满足题中所给的3个条件.
+\end{proof}

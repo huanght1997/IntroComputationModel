@@ -1,0 +1,36 @@
+\problem{设$f:\mathbb{N}\to\mathbb{N}$是Turing-可计算的, 构造机器$M$使其输出$f$的最小零点.}
+\begin{proof}
+    基本思路为: 从0开始计算f的值, 一旦发现f的值为0, 输出, 否则加1再算.
+    
+    这里不知道$M$的输入是什么, 假定$M$的输入为$0\underset{\uparrow}{1}000\cdots$, 即自然数0. 令计算$f$的机器为$\machine{f}$.
+    
+    定义机器$M_1$如表\ref{tab:sol5.14m1}:
+\begin{table}[!htbp]
+\centering
+\caption{题5.14机器$M_1$}
+\label{tab:sol5.14m1}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &       0   &       1   \\\hline
+1   &           &   $0R2$   \\\hline
+2   &   $0L3$   &   $0R5$   \\\hline
+3   &   $0L3$   &   $1L4$   \\\hline
+4   &   $0Ru$   &   $1L4$   \\\hline
+5   &   $0L6$   &   $0R5$   \\\hline
+6   &   $0L6$   &   $1R7$   \\\hline
+7   &   $1L8$   &           \\\hline
+8   &   $0R9$   &   $1L8$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+易知:
+
+$M_1|1:01^{x+1}0\cdots 0\underset{\uparrow}{1}0\cdots\twoheadrightarrow u:0\underset{\uparrow}{1}^{x+1}0\cdots$
+
+当$y>0$时, $M_1|1:01^{x+1}0\cdots 0\underset{\uparrow}{1}^{y+1}0\cdots\twoheadrightarrow 9:0\underset{\uparrow}{1}^{x+2}0\cdots$
+
+到达$u$状态表示无论如何都停机. (可以改成$0R7$, 因为下一位肯定是1)
+
+那么令$M_2=\machine{copy_1}\concat \machine{f}\concat M_1$, 则$M=\mathrm{repeat}M_2$为所求. 在函数$f$没有零点时, 机器$M$将永不停机.
+\end{proof}

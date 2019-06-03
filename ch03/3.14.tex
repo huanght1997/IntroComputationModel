@@ -1,0 +1,13 @@
+\problem{证明命题3.14.}
+命题3.14表述为:
+
+设$R$是$\Lambda$上的一个二元关系, $M\in\mathrm{NF}_R$, 则
+
+(1) 不存在$N\in\Lambda$使得$M\to_RN$;
+
+(2) $M\twoheadrightarrow_R N\Rightarrow M\equiv N$.
+\begin{proof}
+    (1) 由$\mathrm{NF}_R$的定义可知其成立;
+	
+	(2) 假设$M\not\equiv N$. $M\twoheadrightarrow_R N$表示存在$M=P_0,\cdots,P_n=N$使得对任意$i<n,P_i\to_R P_{i+1}$. 由于$M\not\equiv N$, $n\geqslant 1$. 但是这样就存在$N$使得$M\to_R N$, 与(1)矛盾. 因此$M\equiv N$.
+\end{proof}

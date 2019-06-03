@@ -1,0 +1,25 @@
+\problem{设$f,g:\mathbb{N}\to\mathbb{N}, f=\mathrm{Itw}[g]$, 即
+$$\protect\begin{aligned}
+   f(0)&=0,\\
+   f(n+1)&=g(f(n)),
+\protect\end{aligned}$$
+且$G\in\Lambdaclosed$ $\lambda$-定义函数$g$. 试求$F\in\Lambdaclosed$使得$F$ $\lambda$-定义函数$f$.}
+\begin{proof}
+    \[
+\begin{array}{rcl}
+F\churchnumber{n} & = & D\churchnumber{n}\churchnumber{0}
+G[F(\mathrm{pred} \churchnumber{n})] \\
+&=  &
+\{ \lambda n. Dn\churchnumber{0}
+G[F(\mathrm{pred}\quad n)] \} \churchnumber{n} \\
+& = &
+\{ (\lambda fn.
+ \mathrm{D}n\churchnumber{0}
+G[f(\mathrm{pred}\quad n)]) F \} \churchnumber{n}. \\
+\end{array}
+\]
+
+$F\equiv \mathbf{Y}(\lambda xy.
+ \mathrm{D}y\churchnumber{0}
+G[x(\mathrm{pred}\quad y)])$ $\lambda$-定义函数$f$.
+\end{proof}

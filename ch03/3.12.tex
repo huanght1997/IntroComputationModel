@@ -1,0 +1,14 @@
+\problem{证明: 对于任何$M,N\in\Lambda$, 若$M\equivbeta N$, 则存在$T$使$M\manystepbeta T$且$N\manystepbeta T$. 这就是对于$\equivbeta$的CR性质.}
+\begin{proof}
+    $M\equivbeta N$蕴含
+	$$(M,N)\in\bigcup_{i\in\mathbb{N}}(\to_{\beta}\cup\leftarrow_{\beta})^k.$$
+	
+	当$k=0$时, $M\equivbeta N$.
+	假设对所有$(M,N)\in(\to_{\beta}\cup\leftarrow_{\beta})^k$, 存在$T\in\Lambda$使得$M\manystepbeta T$且$N\manystepbeta T$.
+	
+	那么当$(M,N)\in(\to_{\beta}\cup\leftarrow_{\beta})^{k+1}$时, 要么有$M\onestepbeta P=_\beta N$, 要么有$M\leftarrow_\beta P=_\beta N$, 其中$(P,N)\in(\to_{\beta}\cup\leftarrow_{\beta})^k$. 那么存在$T_0$使得$P\manystepbeta T_0$且$N\manystepbeta T_0$. 由于$\manystepbeta$是传递的, 所以$M\manystepbeta T_0$.
+	
+	由于$\manystepbeta$的CR性质, $P\manystepbeta M$且$P\manystepbeta T_0$可得到, 存在$T\in\Lambda$使得$M\manystepbeta T$且$T_0\manystepbeta T$. 由于$\manystepbeta$是传递的, 有$N\manystepbeta T_0$且$T_0\manystepbeta T$, 因此$N\manystepbeta T$.
+	
+	因此对所有的$k\in\mathbb{N}$, 这样的$T$都存在. 命题成立.
+\end{proof}

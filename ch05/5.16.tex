@@ -1,0 +1,10 @@
+\problem{证明引理5.25中的函数$e(m,l)$为初等函数.}
+\begin{proof}
+	利用题5.17的结论, 由$m$可以通过一般递归函数计算每一行的内容$\sharp j$, $\sharp x$, $\sharp y$, $\sharp z$, $\sharp u$, $\sharp v$, $\sharp w$.
+	
+	同时, 由$l$也可以通过一般递归函数计算纸带的编码长度$t$和纸带位置$(j,k):a_1,a_2,\cdot,a_t$.
+	
+	通过循环, 比较, 分支等步骤, 可以计算出$\sharp d(a_j, k),\sharp p(a_j, k),\sharp s(a_j, k)$.
+	
+	因此$e(m,l)=\langle\sharp d(a_j,k),\sharp p(a_j, k),\sharp s(a_j, k)\rangle\in\GRF$.
+\end{proof}

@@ -1,0 +1,58 @@
+\problem{设机器$M_2$定义如表5.25.\\
+对于输入$(2,1):01^n01^m01^k00\cdots$, 其中$n,m,k\in\mathbb{N}^+$, 求输出.}
+\begin{table}[H]
+\centering
+\caption*{\textbf{表5.25}}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+&0&1\\
+\hline
+1&$0R2$&$0R1$\\
+\hline
+2&$1R3$&$0R1$\\
+\hline
+3&$1R4$&\\
+\hline
+4&$1R5$&\\
+\hline
+5&$1L6$&\\
+\hline
+6&$0R7$&$1L6$\\
+\thickhline
+\end{tabularx}
+\end{table}
+
+\begin{solution}
+对于输入$(2,1):01^n01^m01^k00\cdots$, 机器$M_2$有如下计算过程:
+\begin{align}
+    1:&0\underset{\uparrow}{1}^n01^m01^k00\cdots\tag{0R1}\\
+    1:&0^{n+1}\underset{\uparrow}{0}1^m01^k00\cdots\tag{0R2}\\
+    2:&0^{n+2}\underset{\uparrow}{1}^{m}01^k00\cdots\tag{0R1}
+\end{align}
+当$m=1$时, 计算过程为:
+\begin{align}
+    1:&0^{n+3}\underset{\uparrow}{0}1^k00\cdots\tag{0R2}\\
+    2:&0^{n+4}\underset{\uparrow}{1}^k00\cdots\tag{0R1}
+\end{align}
+当$m>1$时, 计算过程为:
+\begin{align}
+    1:&0^{n+3}\underset{\uparrow}{1}^{m-1}01^k00\cdots\tag{0R1}\\
+    1:&0^{n+m+2}\underset{\uparrow}{0}1^k00\cdots\tag{0R2}\\
+    2:&0^{n+m+3}\underset{\uparrow}{1}^k00\cdots\tag{0R1}
+\end{align}
+
+此时机器都处于状态为2, 输入为$0^{n+m+3}\underset{\uparrow}{1}^k00\cdots$的时刻.
+
+当$k=1$时, 计算过程与$m=1$时类似, 当$k>1$时, 计算过程与$m>1$时类似, 机器都会处于状态2, 输入为$0^{n+m+k+4}\underset{\uparrow}{0}0\cdots$的时刻. 接下来的计算过程为:
+\begin{align}
+    2:&0^{n+m+k+4}\underset{\uparrow}{0}0\cdots\tag{1R3}\\
+    3:&0^{n+m+k+4}1\underset{\uparrow}{0}0\cdots\tag{1R4}\\
+    4:&0^{n+m+k+4}11\underset{\uparrow}{0}0\cdots\tag{1R5}\\
+    5:&0^{n+m+k+4}111\underset{\uparrow}{0}0\cdots\tag{1L6}\\
+    6:&0^{n+m+k+4}11\underset{\uparrow}{1}10\cdots\tag{1L6}\\
+    6:&0^{n+m+k+3}\underset{\uparrow}{0}11110\cdots\tag{0R7}\\
+    7:&0^{n+m+k+3}\underset{\uparrow}{1}1110\cdots\tag{停}
+\end{align}
+
+因此机器的输出就是$7:0^{n+m+k+3}\underset{\uparrow}{1}1110\cdots$, 即计算函数$f(x,y,z)=3$.
+\end{solution}

@@ -1,0 +1,26 @@
+\problem{构造机器$\machine{copy_1}$使$\machine{copy_1}|0\underset{\uparrow}{1^x}0\cdots \twoheadrightarrow 01^x0\underset{\uparrow}{1^x}0\cdots$.}
+\begin{solution}
+表\ref{tab:sol5.2}定义了机器$\machine{copy_1}$:
+\begin{table}[!htbp]
+\centering
+\caption{机器$\machine{copy_1}$}
+\label{tab:sol5.2}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &  0    &      1   \\
+\hline
+1   & $0R6$ &   $0R2$   \\
+\hline
+2   & $0R3$ &   $1R2$   \\
+\hline
+3   & $1L4$ &   $1R3$   \\
+\hline
+4   & $0L5$ &   $1L4$   \\
+\hline
+5   & $1R1$ &   $1L5$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+输入时状态为1，输出时状态为6.
+\end{solution}

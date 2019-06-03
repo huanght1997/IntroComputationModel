@@ -1,0 +1,12 @@
+\problem{证明: 对于任意$P,Q\in\Lambda$, 若$P\equivbeta Q$, 则存在$n\in\mathbb{N}$以及$P_0,\cdots,P_n\in\Lambda$,满足\\
+(1) $P\equiv P_0$;\\
+(2) $Q\equiv P_n$;\\
+(3) 对任何$i<n$, $P_i\onestepbeta P_{i+1}$或$P_{i+1}\onestepbeta P_i$.}
+\begin{proof}
+    由于$=_\beta$是$\manystepbeta$的对称闭包, 因此$=_\beta=\{\manystepbeta, \manystepbeta^{-1}\}$, 后者定义为, $A,B\in\Lambda, A\manystepbeta B$当且仅当$B\manystepbeta^{-1}A$.
+	
+	再由题3.7, 可得
+	$$=_\beta=\bigcup_{i\in\mathbb{N}}(\onestepbeta\cup\onestepbeta^{-1})^i.$$
+	
+	因此, 对任意$i=1,2,\cdots, n-1$, 令$P(=_\beta)^iP_i$, 即可满足题中所给的3个条件.
+\end{proof}

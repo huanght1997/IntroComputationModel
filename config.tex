@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%% TeX defines %%%%%%%%%%%%%%%%%%%%%%%
+% Listing Style
+\lstset {
+        basicstyle = \sf,
+        language = Java,
+        tabsize = 4,
+        columns = flexible
+}
+
+% Enumeration separations
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathabx}
+\setenumerate[1]{itemsep=3pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=3pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=3pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\usepackage{sectsty}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% TOC defines %%%%%%%%%%%%%%%%%%%%%%%
+% General terms
+\newcommand{\problem}{\subsection}
+\newenvironment{solution}{\begin{proof}[解]}{\end{proof}}
+
+% Recursive functions
+\newcommand{\IF}{\mathcal{IF}}
+\newcommand{\BF}{\mathcal{BF}}
+\newcommand{\EF}{\mathcal{EF}}
+\newcommand{\PRF}{\mathcal{PRF}}
+\newcommand{\RF}{\mathcal{RF}}
+\newcommand{\GRF}{\mathcal{GRF}}
+\newcommand{\pg}{\mathrm{pg}}
+\newcommand{\rs}{\mathrm{rs}}
+\newcommand{\eq}{\mathrm{eq}}
+\newcommand{\ep}{\mathrm{ep}}
+
+% Abacus machines
+\newcommand{\AM}{\mathrm{AM}}
+\renewcommand{\L}{\left\langle}
+\newcommand{\R}{\right\rangle}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\Sub}{\mathrm{S}}
+\newcommand{\A}{\mathrm{A}}
+\newcommand{\cp}{\mathrm{copy}}
+\newcommand{\mv}{\mathrm{move}}
+
+% Lambda calculus
+\newcommand{\bnf}{\beta\textrm{-nf}}
+\newcommand{\subterm}{\textrm{Sub}}
+\newcommand{\onestepbeta}{\rightarrow_{\beta}}
+\newcommand{\manystepbeta}{\twoheadrightarrow_{\beta}}
+\newcommand{\equivbeta}{=_{\beta}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\K}{\mathbf{K}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\Lambdaclosed}{\Lambda^\circ}
+\newcommand{\churchnumber}[1]{\ulcorner{#1}\urcorner}
+\newcommand{\NF}{\mathrm{NF}}
+
+% Turing Machines
+\newcommand{\machine}[1]{\boxed{\mathrm{#1}}}
+\newcommand{\concat}{\mapstochar\Rightarrow}

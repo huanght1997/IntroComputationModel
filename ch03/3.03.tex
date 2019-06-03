@@ -1,0 +1,10 @@
+\problem{证明: $(\lambda x.xxx)(\lambda x.xxx)$没有$\bnf$.}
+\begin{proof}
+	\begin{align*}
+		(\lambda x.xxx)(\lambda x.xxx)&\onestepbeta (\lambda x.xxx)(\lambda x.xxx)(\lambda x.xxx)\\
+		&\onestepbeta (\lambda x.xxx)(\lambda x.xxx)(\lambda x.xxx)\\
+		&\onestepbeta (\lambda x.xxx)(\lambda x.xxx)(\lambda x.xxx)(\lambda x.xxx)
+	\end{align*}
+	
+	可以看出, 若令$(\lambda x.xxx)=N$, 记$\underbrace{NN\cdots N}_{k\text{个}N}$为$N^k$, 那么可以发现对任意$k>1$, $N^k\onestepbeta N^{k+1}$, 因此每次做$\beta$-归约一次, 得到的式子都包含$NN$这个有$\beta$-可约式, 永远都无法归约得到$\bnf$. 所以$(\lambda x.xxx)(\lambda x.xxx)$没有$\bnf$.
+\end{proof}

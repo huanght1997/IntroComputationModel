@@ -1,0 +1,31 @@
+\problem{设$\mathrm{Exp}\equiv\lambda xy.yx$, 证明: 对于任意的$n\in\mathbb{N}$和$m\in\mathbb{N}^{*}$,
+$$\mathrm{Exp}\churchnumber{n}\churchnumber{m}\equivbeta\churchnumber{n^m}.$$
+(Exp由Rosser教授作出)}
+\begin{proof}
+    将$\mathrm{Exp}$展开, 得:
+\[
+\begin{array}{rcl}
+ \mathrm{Exp} \churchnumber{n} \churchnumber{m} & = &
+  (\lambda xy.yx) (\lambda fx.f^n x) (\lambda fx.f^m x) \\
+ & = & (\lambda fx.f^m x) (\lambda fx.f^n x) \\
+ & = & (\lambda x. (\lambda fy.f^n y)^m x). \\
+\end{array}
+\]
+
+当$m=1$时, $(\lambda fy.f^ny) x = \lambda y. x^n y$.
+假设
+$(\lambda fy.f^ny)^m x = \lambda y. x^{n^m} y$, 有
+ 
+\[
+ \begin{array}{rcl}
+ (\lambda fy.f^ny)^{m+1} x & = &
+ (\lambda fy.f^ny) [ (\lambda fy.f^ny)^m x )] \\
+ & =& (\lambda fy.f^ny)  (\lambda y.x^{n^m} y) \\
+ & = & \lambda y. (\lambda z.x^{n^m} z)^n y \\
+ & = & \lambda y. x^{n^{m+1}} y.
+  \end{array}
+\]
+
+因此, $\mathrm{Exp} \churchnumber{n} \churchnumber{m}
+= \lambda xy. x^{n^{m}}y=\churchnumber{n^m}$ 对任意自然数 $m>0$ 都成立.
+\end{proof}

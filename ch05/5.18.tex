@@ -1,0 +1,14 @@
+\problem{由CT证明函数$g(n)$可计算, 这里$$g(n)=\text{在自然对数之底}\mathrm{e}\text{的十进制展开式中第}n\text{个数字}.$$}
+\begin{proof}
+根据泰勒公式, 
+
+$$\mathrm{e}^x=\sum_{i=0}^n\frac{1}{i!}+\frac{\mathrm{e}^\theta}{(n+1)!},\quad 0<\theta<1.$$
+
+令$f(n)=\lfloor \mathrm{e}\cdot n!\rfloor$, 我们证明$f\in\PRF$.
+
+$f(0)=f(1)=2$, 当$n\geqslant 2$时, $f(n)=\sum_{i=0}^n\frac{n!}{i!}+\frac{\mathrm{e}^\theta}{n+1}$, 而此时$0<\frac{\mathrm{e}^\theta}{n+1}<1$, 所以$f(n)=\sum_{i=0}^n\frac{n!}{i!}$. 显然$f(n)\in\PRF$.
+
+令$h(n)=\lfloor \mathrm{e}\cdot n\rfloor$, 那么有$h(0)=0$, $h(n)=\left\lfloor\frac{f(n)}{(n-1)!}\right\rfloor(n>0)$, 因此$h(n)\in\PRF$.
+
+那么$g(1)=2$, $g(n)=h(10^n)\dotdiv h(10^{n\dotdiv 1})\cdot 10(n>0)$, 因此$g(n)\in\PRF$, 所以$g(n)$可计算.
+\end{proof}

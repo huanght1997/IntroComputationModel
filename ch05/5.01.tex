@@ -1,0 +1,26 @@
+\problem{构造机器计算函数$f(x,y,z)=y$.}
+\begin{solution}
+$f(x,y,z)=y$由表\ref{tab:sol5.1}定义的机器$\machine{P^3_2}$计算: 
+\begin{table}[!htbp]
+\centering
+\caption{机器$\machine{P^3_2}$}
+\label{tab:sol5.1}
+\begin{tabularx}{\textwidth}{Y|Y|Y}
+\thickhline
+    &  0    &      1   \\
+\hline
+1   & $0R2$ &   $0R1$   \\
+\hline
+2   & $0R3$ &   $1R2$   \\
+\hline
+3   & $0L3$ &   $1L4$   \\
+\hline
+4   & $0L4$ &   $1L5$   \\
+\hline
+5   & $0R6$ &   $1L5$   \\
+\thickhline
+\end{tabularx}
+\end{table}
+
+对于$\machine{P^3_2}$输入$1:0\underset{\uparrow}{1}^{x+1}01^{y+1}01^{z+1}0\cdots$, 输出$6:0^{x+3}\underset{\uparrow}{1}^{y+1}0\cdots$.
+\end{solution}

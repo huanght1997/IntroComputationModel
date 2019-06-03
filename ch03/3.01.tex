@@ -1,0 +1,12 @@
+\problem{证明括号引理: 对于任何$M\in \Lambda$, 在$M$中出现的左括号的个数等于在$M$中出现的右括号的个数.}
+\begin{proof}
+    令$L(M)$为在$M$中出现的左括号的个数, $R(M)$为在$M$中出现的右括号的个数. 现在只要证明: 对于任何$M\in\Lambda$, $L(M)=R(M)$.
+
+    当$M\in\nabla$时, $L(M)=R(M)=0$, 命题成立.
+
+    假设当$M,N\in\Lambda$时, $L(M)=R(M)$, $L(N)=R(N)$, 那么令$C=(MN)$, 有$L(C)=L(M)+L(N)+1$, $R(C)=R(M)+R(N)+1$, 可得$L(C)=R(C)$.
+
+    假设当$M\in\Lambda, x\in\nabla$时, $L(M)=R(M)$, 那么令$F=(\lambda x.M)$, 有$L(F)=L(M)+1, R(F)=R(M)+1$, 可得$L(F)=R(F)$.
+
+    由结构归纳法可得, 命题成立.
+\end{proof}

@@ -1,0 +1,59 @@
+\problem{设$g:\mathbb{N}\to\mathbb{N}$满足:
+$$\protect\begin{aligned}
+    g(0)&=0,\\
+    g(1)&=1,\\
+    g(n+2)&=\rs((2002g(n+1)+2003g(n)),2005),
+\protect\end{aligned}
+$$(1) 试求$g(2006)$, (2) 证明$g\in\EF$.}
+\begin{proof}
+    先考虑这么一个数列:$a_1=0,a_2=1,a_{n+2}=2002a_{n+1}+2003a_{n}$.
+
+    我们希望把上面的递推式改写成$a_{n+2}-ba_{n+1}=c(a_{n+1}-ba_n)$的形式, 那么需要得到合适的$b,c$使得$b+c=2002,-bc=2003$.
+
+    根据韦达定理\footnote{一元二次方程$ax^2+bx+c=0(a\neq 0)$的两个根$x_1,x_2$满足$x_1+x_2=-\frac{b}{a}, x_1x_2=\frac{c}{a}$.}, 上式中的$b,c$是方程$x^2-2002x+2003=0$的两个根, 解得其两个根为-1和2003.
+
+    有$a_{n+2}+a_{n+1}=2003(a_{n+1}+a_n)$且$a_{n+2}-2003a_{n+1}=-(a_{n+1}-2003a_n)$,
+    那么有$a_{n+1}+a_{n}=2003^{n-1}(a_2+a_1)=2003^{n-1}$且$a_{n+1}-2003a_n=(-1)^{n-1}(a_2-2003a_1)=(-1)^{n-1}$, 联立解得:
+    $$a_n=\frac{2003^{n-1}-(-1)^{n-1}}{2004}$$
+    
+    \textbf{现在证明}$g(n)\equiv a_{n+1}\pmod{2005}$.
+    
+    当$n=0,1$时, 显然成立.
+
+    假设当$n\leqslant k(k\geqslant 1)$时命题成立, 那么$g(k)\equiv a_{k+1}\pmod{2005}, g(k-1)\equiv a_{k}\pmod{2005}$.
+
+    当$n=k+1$时, $g(k+1)=\rs((2002g(k)+2003g(k-1)),2005)$, 显然$g(k+1)\equiv (2002g(k)+2003g(k-1))\pmod{2005}$.
+
+    由于$g(k)\equiv a_{k+1}\pmod{2005}$, 可得$2002g(k)\equiv 2002a_{k+1}\pmod{2005}$.\footnote{$a\equiv b\pmod{m}\Rightarrow an\equiv bn\pmod{m}, \forall n\in \mathbb{Z}.$}
+
+    由于$g(k-1)\equiv a_{k}\pmod{2005}$, 可得$2003g(k-1)\equiv 2003a_{k}\pmod{2005}$.
+
+    所以$2002g(k)+2003g(k-1)\equiv 2002a_{k+1}+2003a_k\pmod{2005}$.\footnote{$a\equiv b\pmod{m},c\equiv d\pmod{m}\Rightarrow a\pm c\equiv b\pm d\pmod{m}.$}
+
+    所以$g(k+1)\equiv 2002a_{k+1}+2003a_k\pmod{2005}$,\footnote{$a\equiv b\pmod{m},b\equiv c\pmod{m}\Rightarrow a\equiv c\pmod{m}.$} 即$g(k+1)\equiv a_{k+2}\pmod{2005}$成立.
+
+    由数学归纳法得, 命题成立.
+
+    故$$\begin{aligned}
+        g(n)&=\rs(a_{n+1},2005)\\
+        &=\rs(\frac{2003^n-(-1)^n}{2004},2005)\\
+        &=\rs(\frac{2003^n+1}{2004}\rs(n,2)+\frac{2003^n-1}{2004}N(\rs(n,2)),2005),
+    \end{aligned}$$ 所以$g\in\EF$.
+
+    现在开始求$g(2006)$.
+
+    首先$g(2006)=\rs(\frac{2003^{2006}-1}{2004}, 2005)$, 即有$\frac{2003^{2006}-1}{2004}\equiv g(2006)\pmod{2005}$.
+
+    因为$2005=5\cdot 401$, 5和401均为素数, 根据费马小定理\footnote{若$a$是一个整数, $p$是一个素数, 且$a$不是$p$的倍数, 则有$a^{p-1}\equiv 1\pmod{p}.$}, 有$2^4\equiv 1\pmod{5},2^{400}\equiv 1\pmod{401}$. 我们还有$2^{400}\equiv 1\pmod{5}$(令$a=2^{100}$由费马小定理得到). 而401和5的最小公倍数为2005, 故$2^{400}\equiv 1\pmod{2005}$.\footnote{设$m_1,m_2,\cdots,m_n$的最小公倍数为$[m_1,m_2,\cdots,m_n]$, 且$\forall i=1,2,\cdots,n. a\equiv b\pmod{m_i}$, 则有$a\equiv b\pmod{[m_1,m_2,\cdots,m_n]}$}.
+
+    因为$m\mid(m-a)^2-a^2$, 所以$(m-a)^2 \equiv a^2\pmod{m}$. 也就是说, $2003^2\equiv 2^2\pmod{2005},2004^2\equiv 1^2\pmod{2005}$. 那么$2003^{2006}\equiv 2^{2006}\pmod{2005}$.\footnote{$a\equiv b\pmod{m}\Rightarrow a^n\equiv b^n\pmod{m}$.} 
+
+    那么, $\frac{2003^{2006}-1}{2004}\cdot 2004^2 \equiv g(2006)\cdot 1\pmod{2005}$.\footnote{$a\equiv b\pmod{m},c\equiv d\pmod{m}\Rightarrow ac\equiv bd\pmod{m}.$}即$(2003^{2006}-1)\cdot 2004\equiv g(2006)\pmod{2005}$.
+
+    而$(2003^{2006}-1)\cdot 2004\equiv (2^{2006}-1)\cdot 2004\pmod{2005}$.
+
+    又因为$2^{400}\equiv 1\pmod{2005}$, 所以$2^{2000}\equiv 1\pmod{2005}, 2^{2006}\equiv 2^6\pmod{2005}$. 所以$(2^{2006}-1)\cdot 2004\equiv (2^6-1)\cdot 2004 \pmod{2005}$. 于是我们得到$g(2006)\equiv (2^6-1)\cdot 2004\pmod{2005}$, 只要计算$(2^6-1)\cdot 2004$除以2005的余数即可得到$g(2006)$.
+
+    而$2004\equiv -1\pmod{2005}$, 所以$63\cdot 2004\equiv -63\pmod{2005}$, 所以$63\cdot 2004\equiv -63+2005\pmod{2005}$, 所以$g(2006)= 2005 - 63 = 1942$.
+
+\end{proof}
