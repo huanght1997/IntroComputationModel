@@ -28,5 +28,6 @@
 * 丁超 https://github.com/sleepycoke/NJU_Com_Models
 
 ## 采用协议
+[![License: CC BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-本文档采用CC BY-NC-SA 4.0协议。
+本文档采用[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)协议。
