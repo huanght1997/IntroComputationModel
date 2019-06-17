@@ -27,7 +27,7 @@
 * 张强 https://i-m.dev
 * 丁超 https://github.com/sleepycoke/NJU_Com_Models
 
-## 采用协议
+## 许可协议
 [![License: CC BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-本文档采用[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)协议。
+本文档采用[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)许可协议。
