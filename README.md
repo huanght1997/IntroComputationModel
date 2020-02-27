@@ -12,8 +12,6 @@
 
 假设你的Windows安装在C盘，那么将C:\Windows\Fonts文件夹内的SimHei.ttf, SimKai.ttf, SimSun.ttc复制过来，并把SimSun.ttc重命名为SimSun.ttf。
 
-三个字体文件也可以从[这里](https://storage.huang-haitao.com/s/xtNYkBEKaWDDx4S)下载。
-
 也可以使用自己的字体，修改solution.tex里面的`\setCJKMainFont`命令中对字体的配置即可。
 
 ## 编译方式
